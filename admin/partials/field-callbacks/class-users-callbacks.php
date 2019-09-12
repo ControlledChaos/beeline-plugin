@@ -2,14 +2,14 @@
 /**
  * Callbacks for the Users tab on the Site Settings page.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin\Partials\Field_Callbacks
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Partials\Field_Callbacks;
+namespace Beeline_Plugin\Admin\Partials\Field_Callbacks;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -67,11 +67,11 @@ class Users_Callbacks {
 	 */
 	public function block_gravatar( $args ) {
 
-		$option = get_option( 'ccp_block_gravatar' );
+		$option = get_option( 'blp_block_gravatar' );
 
-		$html = '<p><input type="checkbox" id="ccp_block_gravatar" name="ccp_block_gravatar" value="1" ' . checked( 1, $option, false ) . '/>';
+		$html = '<p><input type="checkbox" id="blp_block_gravatar" name="blp_block_gravatar" value="1" ' . checked( 1, $option, false ) . '/>';
 
-		$html .= '<label for="ccp_block_gravatar"> ' . $args[0] . '</label></p>';
+		$html .= '<label for="blp_block_gravatar"> ' . $args[0] . '</label></p>';
 
 		echo $html;
 
@@ -86,11 +86,11 @@ class Users_Callbacks {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_users_callbacks() {
+function blp_users_callbacks() {
 
 	return Users_Callbacks::instance();
 
 }
 
 // Run an instance of the class.
-ccp_users_callbacks();
+blp_users_callbacks();

@@ -2,14 +2,14 @@
 /**
  * Title meta tag.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Frontend\Meta_Tags
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Frontend\Meta_Tags;
+namespace Beeline_Plugin\Frontend\Meta_Tags;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -58,7 +58,7 @@ class Meta_Title {
 	public function __construct() {
 
 		// Add the title to meta tag.
-		add_action( 'ccp_meta_title_tag', [ $this, 'title' ] );
+		add_action( 'blp_meta_title_tag', [ $this, 'title' ] );
 
 	}
 
@@ -81,22 +81,22 @@ class Meta_Title {
 		// Custom author title.
 		$author_title = sprintf(
 			'%1s %2s',
-			__( 'Posts by', 'controlled-chaos-plugin' ),
+			__( 'Posts by', 'beeline-plugin' ),
 			get_the_author_meta( 'display_name', $author_id )
 		);
 
 		// Apply a filter to author archive title.
-		$author_meta = apply_filters( 'ccp_author_meta_title', $author_title );
+		$author_meta = apply_filters( 'blp_author_meta_title', $author_title );
 
 		// Custom search title.
 		$search_title = sprintf(
 			'%1s %2s',
-			__( 'Searching', 'controlled-chaos-plugin' ),
+			__( 'Searching', 'beeline-plugin' ),
 			get_bloginfo( 'name' )
 		);
 
 		// Apply a filter to search title.
-		$search_meta = apply_filters( 'ccp_search_meta_title', $search_title );
+		$search_meta = apply_filters( 'blp_search_meta_title', $search_title );
 
 		// Use the website name on the front page and 404 error page.
 		if ( is_front_page() || is_404() ) {
@@ -137,11 +137,11 @@ class Meta_Title {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_meta_title() {
+function blp_meta_title() {
 
 	return Meta_Title::instance();
 
 }
 
 // Run an instance of the class.
-ccp_meta_title();
+blp_meta_title();

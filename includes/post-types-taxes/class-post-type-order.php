@@ -5,7 +5,7 @@
  * This functionality is forked and reworked from the
  * Simple Custom Post order plugin by Colorlib.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
@@ -15,7 +15,7 @@
  * @link       https://wordpress.org/plugins/simple-custom-post-order/
  */
 
-namespace CC_Plugin\Includes\Post_Types_Taxes;
+namespace Beeline_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -30,12 +30,12 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 // If Advanced Custom Fields is active.
-if ( ccp_acf_options() ) {
-    $sort_order = get_field( 'ccp_use_custom_sort_order', 'option' );
+if ( blp_acf_options() ) {
+    $sort_order = get_field( 'blp_use_custom_sort_order', 'option' );
 
 // If Advanced Custom Fields is not active.
 } else {
-    $sort_order = get_option( 'ccp_use_custom_sort_order' );
+    $sort_order = get_option( 'blp_use_custom_sort_order' );
 }
 
 // Bail if the option to use sort order is not selected.
@@ -68,7 +68,7 @@ class Post_Types_Taxes_Order {
 			// Set variable for new instance.
             $instance = new self;
 
-            if ( ! get_option( 'ccp_order_install ' ) ) {
+            if ( ! get_option( 'blp_order_install ' ) ) {
                 $instance->order_install();
             }
 
@@ -129,7 +129,7 @@ class Post_Types_Taxes_Order {
             $result = $wpdb->query( $query );
         }
 
-        update_option( 'ccp_order_install', 1 );
+        update_option( 'blp_order_install', 1 );
 
     }
 
@@ -146,8 +146,8 @@ class Post_Types_Taxes_Order {
     public function admin_menu() {
 
         add_options_page(
-            __( 'Posts & Taxonomies Sort Order', 'controlled-chaos-plugin' ),
-            __( 'Sort Order', 'controlled-chaos-plugin' ),
+            __( 'Posts & Taxonomies Sort Order', 'beeline-plugin' ),
+            __( 'Sort Order', 'beeline-plugin' ),
             'manage_options',
             'sort-order-settings',
             [ $this, 'admin_page' ]
@@ -166,7 +166,7 @@ class Post_Types_Taxes_Order {
      */
     public function admin_page() {
 
-        require CCP_PATH . 'admin/partials/settings-page-posts-order.php';
+        require BLP_PATH . 'admin/partials/settings-page-posts-order.php';
 
     }
 
@@ -234,7 +234,7 @@ class Post_Types_Taxes_Order {
 
             wp_enqueue_script( 'jquery' );
             wp_enqueue_script( 'jquery-ui-sortable' );
-            wp_enqueue_script( 'post-tax-order', CCP_URL . 'admin/assets/js/post-tax-order.js', [ 'jquery' ], null, true );
+            wp_enqueue_script( 'post-tax-order', BLP_URL . 'admin/assets/js/post-tax-order.js', [ 'jquery' ], null, true );
 
         }
 
@@ -433,17 +433,17 @@ class Post_Types_Taxes_Order {
 
         global $wpdb;
 
-        if ( ! isset( $_POST['ccp_posts_order_submit'] ) ) {
+        if ( ! isset( $_POST['blp_posts_order_submit'] ) ) {
             return false;
         }
 
-        check_admin_referer( 'ccp_posts_order_nonce' );
+        check_admin_referer( 'blp_posts_order_nonce' );
 
         $input_options            = [];
         $input_options['objects'] = isset( $_POST['objects'] ) ? $_POST['objects'] : '';
         $input_options['tags']    = isset( $_POST['tags'] ) ? $_POST['tags'] : '';
 
-        update_option( 'ccp_order_options', $input_options );
+        update_option( 'blp_order_options', $input_options );
 
         $objects = $this->get_order_options_objects();
         $tags    = $this->get_order_options_tags();
@@ -804,14 +804,14 @@ class Post_Types_Taxes_Order {
      */
     public function get_order_options_objects() {
 
-        if ( $ccp_order_options = get_option( 'ccp_order_options' ) ) {
-            $ccp_order_options = get_option( 'ccp_order_options' );
+        if ( $blp_order_options = get_option( 'blp_order_options' ) ) {
+            $blp_order_options = get_option( 'blp_order_options' );
         } else {
-            $ccp_order_options = [];
+            $blp_order_options = [];
         }
 
-        if ( isset( $ccp_order_options['objects'] ) && is_array( $ccp_order_options['objects'] ) ) {
-            $objects = $ccp_order_options['objects'];
+        if ( isset( $blp_order_options['objects'] ) && is_array( $blp_order_options['objects'] ) ) {
+            $objects = $blp_order_options['objects'];
         } else {
             $objects = [];
         }
@@ -829,14 +829,14 @@ class Post_Types_Taxes_Order {
      */
     public function get_order_options_tags() {
 
-        if ( $ccp_order_options = get_option( 'ccp_order_options' ) ) {
-            $ccp_order_options = get_option( 'ccp_order_options' );
+        if ( $blp_order_options = get_option( 'blp_order_options' ) ) {
+            $blp_order_options = get_option( 'blp_order_options' );
         } else {
-            $ccp_order_options = [];
+            $blp_order_options = [];
         }
 
-        if ( isset( $ccp_order_options['tags'] ) && is_array( $ccp_order_options['tags'] ) ) {
-            $tags = $ccp_order_options['tags'];
+        if ( isset( $blp_order_options['tags'] ) && is_array( $blp_order_options['tags'] ) ) {
+            $tags = $blp_order_options['tags'];
         } else {
             $tags = [];
         }
@@ -854,14 +854,14 @@ class Post_Types_Taxes_Order {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_post_types_taxes_order() {
+function blp_post_types_taxes_order() {
 
 	return Post_Types_Taxes_Order::instance();
 
 }
 
 // Run an instance of the class.
-ccp_post_types_taxes_order();
+blp_post_types_taxes_order();
 
 /**
  * SCP Order Uninstall hook
@@ -901,6 +901,6 @@ function uninstall_db() {
         $result = $wpdb->query( $query );
     }
 
-    delete_option( 'ccp_order_install' );
+    delete_option( 'blp_order_install' );
 
 }

@@ -2,7 +2,7 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin
  *
  * @since      1.0.0
@@ -24,16 +24,16 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * @access public
  * @return void
  */
-function ccp_user_avatars_uninstall() {
+function blp_user_avatars_uninstall() {
 
-	$ccp_user_avatars = new ccp_user_avatars;
+	$blp_user_avatars = new blp_user_avatars;
 	$users            = get_users_of_blog();
 
 	foreach ( $users as $user ) {
-		$ccp_user_avatars->avatar_delete( $user->user_id );
+		$blp_user_avatars->avatar_delete( $user->user_id );
 	}
 
-	delete_option( 'ccp_user_avatars_caps' );
+	delete_option( 'blp_user_avatars_caps' );
 
 }
-register_uninstall_hook( __FILE__, 'ccp_user_avatars_uninstall' );
+register_uninstall_hook( __FILE__, 'blp_user_avatars_uninstall' );

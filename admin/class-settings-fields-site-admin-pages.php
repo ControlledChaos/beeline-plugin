@@ -2,14 +2,14 @@
 /**
  * Settings for the Admin Pages tab on the Site Settings page.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin;
+namespace Beeline_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -82,7 +82,7 @@ class Settings_Fields_Site_Admin_Pages {
 	private function dependencies() {
 
 		// Callbacks for the Admin Pages tab.
-		require CCP_PATH . 'admin/partials/field-callbacks/class-admin-pages-callbacks.php';
+		require BLP_PATH . 'admin/partials/field-callbacks/class-admin-pages-callbacks.php';
 
 	}
 
@@ -99,85 +99,85 @@ class Settings_Fields_Site_Admin_Pages {
 
 		// Admin pages settings section.
 		add_settings_section(
-			'ccp-site-admin-pages',
-			__( 'Admin Pages Settings', 'controlled-chaos-plugin' ),
+			'blp-site-admin-pages',
+			__( 'Admin Pages Settings', 'beeline-plugin' ),
 			[],
-			'ccp-site-admin-pages'
+			'blp-site-admin-pages'
 		);
 
 		// Restore the TinyMCE editor.
 		add_settings_field(
-			'ccp_classic_editor',
-			__( 'Classic Editor', 'controlled-chaos-plugin' ),
+			'blp_classic_editor',
+			__( 'Classic Editor', 'beeline-plugin' ),
 			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'classic_editor' ],
-			'ccp-site-admin-pages',
-			'ccp-site-admin-pages',
-			[ esc_html__( 'Disable the block editor (a.k.a. Gutenberg) and restore the TinyMCE editor.', 'controlled-chaos-plugin' ) ]
+			'blp-site-admin-pages',
+			'blp-site-admin-pages',
+			[ esc_html__( 'Disable the block editor (a.k.a. Gutenberg) and restore the TinyMCE editor.', 'beeline-plugin' ) ]
 		);
 
 		register_setting(
-			'ccp-site-admin-pages',
-			'ccp_classic_editor'
+			'blp-site-admin-pages',
+			'blp_classic_editor'
 		);
 
 		// Use the admin header.
 		add_settings_field(
-			'ccp_use_admin_header',
-			__( 'Admin Header', 'controlled-chaos-plugin' ),
+			'blp_use_admin_header',
+			__( 'Admin Header', 'beeline-plugin' ),
 			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'admin_header' ],
-			'ccp-site-admin-pages',
-			'ccp-site-admin-pages',
-			[ esc_html__( 'Add the site title, site tagline, and a nav menu to the top of admin pages.', 'controlled-chaos-plugin' ) ]
+			'blp-site-admin-pages',
+			'blp-site-admin-pages',
+			[ esc_html__( 'Add the site title, site tagline, and a nav menu to the top of admin pages.', 'beeline-plugin' ) ]
 		);
 
 		register_setting(
-			'ccp-site-admin-pages',
-			'ccp_use_admin_header'
+			'blp-site-admin-pages',
+			'blp_use_admin_header'
 		);
 
 		// Use custom sort order.
 		add_settings_field(
-			'ccp_use_custom_sort_order',
-			__( 'Drag & Drop Sort Order', 'controlled-chaos-plugin' ),
+			'blp_use_custom_sort_order',
+			__( 'Drag & Drop Sort Order', 'beeline-plugin' ),
 			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'custom_sort_order' ],
-			'ccp-site-admin-pages',
-			'ccp-site-admin-pages',
-			[ esc_html__( 'Add drag & drop sort order functionality to post types and taxonomies.', 'controlled-chaos-plugin' ) ]
+			'blp-site-admin-pages',
+			'blp-site-admin-pages',
+			[ esc_html__( 'Add drag & drop sort order functionality to post types and taxonomies.', 'beeline-plugin' ) ]
 		);
 
 		register_setting(
-			'ccp-site-admin-pages',
-			'ccp_use_custom_sort_order'
+			'blp-site-admin-pages',
+			'blp_use_custom_sort_order'
 		);
 
 		// Admin footer credit.
 		add_settings_field(
-			'ccp_footer_credit',
-			__( 'Admin Footer Credit', 'controlled-chaos-plugin' ),
+			'blp_footer_credit',
+			__( 'Admin Footer Credit', 'beeline-plugin' ),
 			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'footer_credit' ],
-			'ccp-site-admin-pages',
-			'ccp-site-admin-pages',
-			[ esc_html__( 'The "developed by" credit.', 'controlled-chaos-plugin' ) ]
+			'blp-site-admin-pages',
+			'blp-site-admin-pages',
+			[ esc_html__( 'The "developed by" credit.', 'beeline-plugin' ) ]
 		);
 
 		register_setting(
-			'ccp-site-admin-pages',
-			'ccp_footer_credit'
+			'blp-site-admin-pages',
+			'blp_footer_credit'
 		);
 
 		// Admin footer link.
 		add_settings_field(
-			'ccp_footer_link',
-			__( 'Admin Footer Link', 'controlled-chaos-plugin' ),
+			'blp_footer_link',
+			__( 'Admin Footer Link', 'beeline-plugin' ),
 			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'footer_link' ],
-			'ccp-site-admin-pages',
-			'ccp-site-admin-pages',
-			[ esc_html__( 'Link to the website devoloper.', 'controlled-chaos-plugin' ) ]
+			'blp-site-admin-pages',
+			'blp-site-admin-pages',
+			[ esc_html__( 'Link to the website devoloper.', 'beeline-plugin' ) ]
 		);
 
 		register_setting(
-			'ccp-site-admin-pages',
-			'ccp_footer_link'
+			'blp-site-admin-pages',
+			'blp_footer_link'
 		);
 
 	}
@@ -191,11 +191,11 @@ class Settings_Fields_Site_Admin_Pages {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_settings_fields_site_admin_pages() {
+function blp_settings_fields_site_admin_pages() {
 
 	return Settings_Fields_Site_Admin_Pages::instance();
 
 }
 
 // Run an instance of the class.
-ccp_settings_fields_site_admin_pages();
+blp_settings_fields_site_admin_pages();

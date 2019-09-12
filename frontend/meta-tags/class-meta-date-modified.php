@@ -2,14 +2,14 @@
 /**
  * Date modified meta tag.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Frontend\Meta_Tags
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Frontend\Meta_Tags;
+namespace Beeline_Plugin\Frontend\Meta_Tags;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -58,7 +58,7 @@ class Meta_Date_Modified {
 	public function __construct() {
 
 		// Add modified date to the meta tag.
-		add_action( 'ccp_meta_date_mod_tag', [ $this, 'date' ] );
+		add_action( 'blp_meta_date_mod_tag', [ $this, 'date' ] );
 
 	}
 
@@ -96,11 +96,11 @@ class Meta_Date_Modified {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_meta_date_mod() {
+function blp_meta_date_mod() {
 
 	return Meta_Date_Modified::instance();
 
 }
 
 // Run an instance of the class.
-ccp_meta_date_mod();
+blp_meta_date_mod();

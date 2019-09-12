@@ -2,14 +2,14 @@
 /**
  * Define the internationalization functionality.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes;
+namespace Beeline_Plugin\Includes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -74,7 +74,7 @@ class i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'controlled-chaos-plugin',
+			'beeline-plugin',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
@@ -90,11 +90,11 @@ class i18n {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_i18n() {
+function blp_i18n() {
 
 	return i18n::instance();
 
 }
 
 // Run an instance of the class.
-ccp_i18n();
+blp_i18n();

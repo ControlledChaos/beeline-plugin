@@ -2,7 +2,7 @@
 /**
  * Wordpress user functionality.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Users
  *
  * @since      1.0.0
@@ -10,7 +10,7 @@
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes\Users;
+namespace Beeline_Plugin\Includes\Users;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -71,7 +71,7 @@ class Users {
 	private function dependencies() {
 
 		// User avatars.
-		require_once CCP_PATH . 'includes/users/class-user-avatars.php';
+		require_once BLP_PATH . 'includes/users/class-user-avatars.php';
 
 	}
 
@@ -84,11 +84,11 @@ class Users {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_users() {
+function blp_users() {
 
 	return Users::instance();
 
 }
 
 // Run an instance of the class.
-ccp_users();
+blp_users();

@@ -2,14 +2,14 @@
 /**
  * Settings page for site customization.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin;
+namespace Beeline_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -93,7 +93,7 @@ class Settings_Page_Site {
     public function settings_page() {
 
 		// If the Advanced Custom Fields Pro plugin is active.
-		if ( ccp_acf_options() ) {
+		if ( blp_acf_options() ) {
 
 			// Use the site name in the title tag but apply a filter for customization.
 			$title      = apply_filters( 'site_settings_page_name', get_bloginfo( 'name' ) );
@@ -105,13 +105,13 @@ class Settings_Page_Site {
 			 */
 
 			// The position of the page in the admin menu (top-level or under Dashboard).
-			$position   = get_field( 'ccp_settings_link_position', 'option' );
+			$position   = get_field( 'blp_settings_link_position', 'option' );
 
 			// The label of the page in the admin menu.
-			$link_label = get_field( 'ccp_site_settings_link_label', 'option' );
+			$link_label = get_field( 'blp_site_settings_link_label', 'option' );
 
 			// The icon used for the pagin in the admin menu.
-			$link_icon  = get_field( 'ccp_site_settings_link_icon', 'option' );
+			$link_icon  = get_field( 'blp_site_settings_link_icon', 'option' );
 
 			// Use the custom admin menu label if the field is not empty.
 			if ( $link_label ) {
@@ -119,7 +119,7 @@ class Settings_Page_Site {
 
 			// Otherwise use "Site Settings" as the label.
 			}  else {
-				$label = __( 'Site Settings', 'controlled-chaos-plugin' );
+				$label = __( 'Site Settings', 'beeline-plugin' );
 			}
 
 			// Use the custom admin menu icon if the field is not empty.
@@ -139,9 +139,9 @@ class Settings_Page_Site {
 
 				// Page arguments.
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_top', [
-					'page_title' => $title . __( ' Settings', 'controlled-chaos-plugin' ),
+					'page_title' => $title . __( ' Settings', 'beeline-plugin' ),
 					'menu_title' => $label,
-					'menu_slug'  => CCP_ADMIN_SLUG . '-settings',
+					'menu_slug'  => BLP_ADMIN_SLUG . '-settings',
 					'icon_url'   => $icon,
 					'position'   => 3,
 					'capability' => 'manage_options',
@@ -161,9 +161,9 @@ class Settings_Page_Site {
 			} else {
 
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_default', [
-					'page_title' => $title . __( ' Settings', 'controlled-chaos-plugin' ),
+					'page_title' => $title . __( ' Settings', 'beeline-plugin' ),
 					'menu_title' => $label,
-					'menu_slug'  => CCP_ADMIN_SLUG . '-settings',
+					'menu_slug'  => BLP_ADMIN_SLUG . '-settings',
 					'parent'     => 'index.php',
 					'capability' => 'manage_options'
 				] );
@@ -183,13 +183,13 @@ class Settings_Page_Site {
 			 */
 
 			// The position of the page in the admin menu (top-level or under Dashboard).
-			$position   = get_option( 'ccp_site_settings_position' );
+			$position   = get_option( 'blp_site_settings_position' );
 
 			// The label of the page in the admin menu.
-			$link_label = sanitize_text_field( get_option( 'ccp_site_settings_link_label' ) );
+			$link_label = sanitize_text_field( get_option( 'blp_site_settings_link_label' ) );
 
 			// The icon used for the pagin in the admin menu.
-			$link_icon  = sanitize_text_field( get_option( 'ccp_site_settings_link_icon' ) );
+			$link_icon  = sanitize_text_field( get_option( 'blp_site_settings_link_icon' ) );
 
 			// Use the custom admin menu icon if the field is not empty.
 			if ( $link_label ) {
@@ -197,7 +197,7 @@ class Settings_Page_Site {
 
 			// Otherwise use "Site Settings" as the label.
 			}  else {
-				$label = __( 'Site Settings', 'controlled-chaos-plugin' );
+				$label = __( 'Site Settings', 'beeline-plugin' );
 			}
 
 			// Use the custom admin menu icon if the field is not empty.
@@ -206,7 +206,7 @@ class Settings_Page_Site {
 
 			// Otherwise use the Admin Settings icon.
 			}  else {
-				$icon = __( 'dashicons-admin-settings', 'controlled-chaos-plugin' );
+				$icon = __( 'dashicons-admin-settings', 'beeline-plugin' );
 			}
 
 			/**
@@ -218,7 +218,7 @@ class Settings_Page_Site {
 					$label,
 					$label,
 					'manage_options',
-					CCP_ADMIN_SLUG . '-settings',
+					BLP_ADMIN_SLUG . '-settings',
 					[ $this, 'page_output' ],
 					$icon,
 					3
@@ -240,7 +240,7 @@ class Settings_Page_Site {
 					$label,
 					$label,
 					'manage_options',
-					CCP_ADMIN_SLUG . '-settings',
+					BLP_ADMIN_SLUG . '-settings',
 					[ $this, 'page_output' ]
 				);
 
@@ -258,17 +258,17 @@ class Settings_Page_Site {
 				if (
 					$position
 					&& in_array( $pagenow, [ 'index.php' ] )
-					&& ( $_GET['page'] == CCP_ADMIN_SLUG . '-settings' )
+					&& ( $_GET['page'] == BLP_ADMIN_SLUG . '-settings' )
 				) {
-					wp_redirect( admin_url( 'admin.php?page=' . CCP_ADMIN_SLUG . '-settings&tab=admin-menu' ), 302 );
+					wp_redirect( admin_url( 'admin.php?page=' . BLP_ADMIN_SLUG . '-settings&tab=admin-menu' ), 302 );
 
 				// If on the top level page and top level option is not selected.
 				} elseif (
 					! $position
 					&& in_array( $pagenow, [ 'admin.php' ] )
-					&& ( $_GET['page'] == CCP_ADMIN_SLUG . '-settings' )
+					&& ( $_GET['page'] == BLP_ADMIN_SLUG . '-settings' )
 				) {
-					wp_redirect( admin_url( 'index.php?page=' . CCP_ADMIN_SLUG . '-settings&tab=admin-menu' ), 302 );
+					wp_redirect( admin_url( 'index.php?page=' . BLP_ADMIN_SLUG . '-settings&tab=admin-menu' ), 302 );
 				}
 			}
 
@@ -294,7 +294,7 @@ class Settings_Page_Site {
 		// Inline Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'inline_scripts',
-			'title'    => __( 'ACF Notice', 'controlled-chaos-plugin' ),
+			'title'    => __( 'ACF Notice', 'beeline-plugin' ),
 			'content'  => null,
 			'callback' => [ $this, 'help_acf_settings_notice' ]
 		] );
@@ -315,7 +315,7 @@ class Settings_Page_Site {
      */
 	public function help_acf_settings_notice() {
 
-		include_once CCP_PATH . 'admin/partials/help/help-acf-notice.php';
+		include_once BLP_PATH . 'admin/partials/help/help-acf-notice.php';
 
 	}
 
@@ -329,7 +329,7 @@ class Settings_Page_Site {
     public function page_help_section_sidebar() {
 
 		$html = '<ul>
-			<li><a href="https://www.advancedcustomfields.com/resources/" target="_blank" style="text-decoration: none;">' . __( 'ACF Documentation', 'controlled-chaos-plugin' ) . '</a></li>
+			<li><a href="https://www.advancedcustomfields.com/resources/" target="_blank" style="text-decoration: none;">' . __( 'ACF Documentation', 'beeline-plugin' ) . '</a></li>
 		</ul>';
 
 		return $html;
@@ -346,7 +346,7 @@ class Settings_Page_Site {
     public function page_output() {
 
 		// Get the partial that contains the settings page HTML.
-		require CCP_PATH . 'admin/partials/settings-page-site.php';
+		require BLP_PATH . 'admin/partials/settings-page-site.php';
 
 	}
 
@@ -362,11 +362,11 @@ class Settings_Page_Site {
 	 */
 	public function acf_docs_link() {
 
-		if ( ccp_acf_options() ) {
+		if ( blp_acf_options() ) {
 
 			global $submenu;
 			$url = 'https://www.advancedcustomfields.com/resources/';
-			$submenu['edit.php?post_type=acf-field-group'][] = [ __( 'Documentation', 'controlled-chaos-plugin' ), 'manage_options', $url ];
+			$submenu['edit.php?post_type=acf-field-group'][] = [ __( 'Documentation', 'beeline-plugin' ), 'manage_options', $url ];
 
 		}
 
@@ -381,11 +381,11 @@ class Settings_Page_Site {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_settings_page_site() {
+function blp_settings_page_site() {
 
 	return Settings_Page_Site::instance();
 
 }
 
 // Run an instance of the class.
-ccp_settings_page_site();
+blp_settings_page_site();

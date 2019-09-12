@@ -2,14 +2,14 @@
 /**
  * Settings for the Site Settings page.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin;
+namespace Beeline_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -80,19 +80,19 @@ class Settings_Fields_Site {
 	private function dependencies() {
 
 		// Settings for the Dashboard tab.
-		require CCP_PATH . 'admin/class-settings-fields-site-dashboard.php';
+		require BLP_PATH . 'admin/class-settings-fields-site-dashboard.php';
 
 		// Settings for the Admin Menu tab.
-		require CCP_PATH . 'admin/class-settings-fields-site-admin-menu.php';
+		require BLP_PATH . 'admin/class-settings-fields-site-admin-menu.php';
 
 		// Settings for the Admin Menu tab.
-		require CCP_PATH . 'admin/class-settings-fields-site-admin-pages.php';
+		require BLP_PATH . 'admin/class-settings-fields-site-admin-pages.php';
 
 		// Settings for the Admin Menu tab.
-		require CCP_PATH . 'admin/class-settings-fields-site-users.php';
+		require BLP_PATH . 'admin/class-settings-fields-site-users.php';
 
 		// Callbacks for the Meta/SEO tab.
-		require CCP_PATH . 'admin/class-settings-fields-site-meta-seo.php';
+		require BLP_PATH . 'admin/class-settings-fields-site-meta-seo.php';
 
 	}
 
@@ -115,7 +115,7 @@ class Settings_Fields_Site {
 			'at_glance'           => false,
 			'activity'            => false,
 			'settings_position'   => false,
-			'settings_link_label' => __( 'Site Settings', 'controlled-chaos-plugin' ),
+			'settings_link_label' => __( 'Site Settings', 'beeline-plugin' ),
 			'settings_link_icon'  => 'dashicons-welcome-learn-more',
 			'plugin_position'     => false,
 			'plugin_link_label'   => false,
@@ -129,7 +129,7 @@ class Settings_Fields_Site {
 			'links'               => false
 		];
 
-		return apply_filters ( 'ccp_site_settings', $defaults );
+		return apply_filters ( 'blp_site_settings', $defaults );
 
 	}
 
@@ -142,11 +142,11 @@ class Settings_Fields_Site {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_settings_fields_site() {
+function blp_settings_fields_site() {
 
 	return Settings_Fields_Site::instance();
 
 }
 
 // Run an instance of the class.
-ccp_settings_fields_site();
+blp_settings_fields_site();

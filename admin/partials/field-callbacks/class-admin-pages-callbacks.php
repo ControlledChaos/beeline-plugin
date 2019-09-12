@@ -2,14 +2,14 @@
 /**
  * Callbacks for the Admin Pages tab on the Site Settings page.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin\Partials\Field_Callbacks
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Partials\Field_Callbacks;
+namespace Beeline_Plugin\Admin\Partials\Field_Callbacks;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -67,11 +67,11 @@ class Admin_Pages_Callbacks {
 	 */
 	public function classic_editor( $args ) {
 
-		$option = get_option( 'ccp_classic_editor' );
+		$option = get_option( 'blp_classic_editor' );
 
-		$html = '<p><input type="checkbox" id="ccp_classic_editor" name="ccp_classic_editor" value="1" ' . checked( 1, $option, false ) . '/>';
+		$html = '<p><input type="checkbox" id="blp_classic_editor" name="blp_classic_editor" value="1" ' . checked( 1, $option, false ) . '/>';
 
-		$html .= '<label for="ccp_classic_editor"> '  . $args[0] . '</label></p>';
+		$html .= '<label for="blp_classic_editor"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 
@@ -87,11 +87,11 @@ class Admin_Pages_Callbacks {
 	 */
 	public function admin_header( $args ) {
 
-		$option = get_option( 'ccp_use_admin_header' );
+		$option = get_option( 'blp_use_admin_header' );
 
-		$html = '<p><input type="checkbox" id="ccp_use_admin_header" name="ccp_use_admin_header" value="1" ' . checked( 1, $option, false ) . '/>';
+		$html = '<p><input type="checkbox" id="blp_use_admin_header" name="blp_use_admin_header" value="1" ' . checked( 1, $option, false ) . '/>';
 
-		$html .= '<label for="ccp_use_admin_header"> '  . $args[0] . '</label></p>';
+		$html .= '<label for="blp_use_admin_header"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 
@@ -107,11 +107,11 @@ class Admin_Pages_Callbacks {
 	 */
 	public function custom_sort_order( $args ) {
 
-		$option = get_option( 'ccp_use_custom_sort_order' );
+		$option = get_option( 'blp_use_custom_sort_order' );
 
-		$html = '<p><input type="checkbox" id="ccp_use_custom_sort_order" name="ccp_use_custom_sort_order" value="1" ' . checked( 1, $option, false ) . '/>';
+		$html = '<p><input type="checkbox" id="blp_use_custom_sort_order" name="blp_use_custom_sort_order" value="1" ' . checked( 1, $option, false ) . '/>';
 
-		$html .= '<label for="ccp_use_custom_sort_order"> '  . $args[0] . '</label></p>';
+		$html .= '<label for="blp_use_custom_sort_order"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 
@@ -127,11 +127,11 @@ class Admin_Pages_Callbacks {
 	 */
 	public function footer_credit( $args ) {
 
-		$option = get_option( 'ccp_footer_credit' );
+		$option = get_option( 'blp_footer_credit' );
 
-		$html = '<p><input type="text" size="50" id="ccp_footer_credit" name="ccp_footer_credit" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Your name/agency', 'controlled-chaos-plugin' ) ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="blp_footer_credit" name="blp_footer_credit" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Your name/agency', 'beeline-plugin' ) ) . '" /><br />';
 
-		$html .= '<label for="ccp_footer_credit"> ' . $args[0] . '</label></p>';
+		$html .= '<label for="blp_footer_credit"> ' . $args[0] . '</label></p>';
 
 		echo $html;
 
@@ -147,11 +147,11 @@ class Admin_Pages_Callbacks {
 	 */
 	public function footer_link( $args ) {
 
-		$option = get_option( 'ccp_footer_link' );
+		$option = get_option( 'blp_footer_link' );
 
-		$html = '<p><input type="text" size="50" id="ccp_footer_link" name="ccp_footer_link" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( 'http://example.com/' ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="blp_footer_link" name="blp_footer_link" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( 'http://example.com/' ) . '" /><br />';
 
-		$html .= '<label for="ccp_footer_link"> ' . $args[0] . '</label></p>';
+		$html .= '<label for="blp_footer_link"> ' . $args[0] . '</label></p>';
 
 		echo $html;
 
@@ -166,11 +166,11 @@ class Admin_Pages_Callbacks {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_admin_pages_callbacks() {
+function blp_admin_pages_callbacks() {
 
 	return Admin_Pages_Callbacks::instance();
 
 }
 
 // Run an instance of the class.
-ccp_admin_pages_callbacks();
+blp_admin_pages_callbacks();

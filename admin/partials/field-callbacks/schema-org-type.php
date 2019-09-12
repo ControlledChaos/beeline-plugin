@@ -2,14 +2,14 @@
 /**
  * SCallback for the Schema organization type field.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin\Partials\Field_Callbacks
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Partials\Field_Callbacks;
+namespace Beeline_Plugin\Admin\Partials\Field_Callbacks;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -19,179 +19,179 @@ if ( ! defined( 'WPINC' ) ) {
 $types = [
 
 	// First option save null.
-	null          => __( 'Select one&hellip;', 'controlled-chaos-plugin' ),
-	'Airline'     => __( 'Airline', 'controlled-chaos-plugin' ),
-	'Corporation' => __( 'Corporation', 'controlled-chaos-plugin' ),
+	null          => __( 'Select one&hellip;', 'beeline-plugin' ),
+	'Airline'     => __( 'Airline', 'beeline-plugin' ),
+	'Corporation' => __( 'Corporation', 'beeline-plugin' ),
 
 	// Educational Organizations.
-	'EducationalOrganization' => __( 'Educational Organization', 'controlled-chaos-plugin' ),
-		'CollegeOrUniversity' => __( '— College or University', 'controlled-chaos-plugin' ),
-		'ElementarySchool'    => __( '— Elementary School', 'controlled-chaos-plugin' ),
-		'HighSchool'          => __( '— High School', 'controlled-chaos-plugin' ),
-		'MiddleSchool'        => __( '— Middle School', 'controlled-chaos-plugin' ),
-		'Preschool'           => __( '— Preschool', 'controlled-chaos-plugin' ),
-		'School'              => __( '— School', 'controlled-chaos-plugin' ),
+	'EducationalOrganization' => __( 'Educational Organization', 'beeline-plugin' ),
+		'CollegeOrUniversity' => __( '— College or University', 'beeline-plugin' ),
+		'ElementarySchool'    => __( '— Elementary School', 'beeline-plugin' ),
+		'HighSchool'          => __( '— High School', 'beeline-plugin' ),
+		'MiddleSchool'        => __( '— Middle School', 'beeline-plugin' ),
+		'Preschool'           => __( '— Preschool', 'beeline-plugin' ),
+		'School'              => __( '— School', 'beeline-plugin' ),
 
-	'GovernmentOrganization'  => __( 'Government Organization', 'controlled-chaos-plugin' ),
+	'GovernmentOrganization'  => __( 'Government Organization', 'beeline-plugin' ),
 
 	// Local Businesses.
-	'LocalBusiness' => __( 'Local Business', 'controlled-chaos-plugin' ),
-		'AnimalShelter' => __( '— Animal Shelter', 'controlled-chaos-plugin' ),
+	'LocalBusiness' => __( 'Local Business', 'beeline-plugin' ),
+		'AnimalShelter' => __( '— Animal Shelter', 'beeline-plugin' ),
 
 		// Automotive Businesses.
-		'AutomotiveBusiness' => __( '— Automotive Business', 'controlled-chaos-plugin' ),
-			'AutoBodyShop'     => __( '—— Auto Body Shop', 'controlled-chaos-plugin' ),
-			'AutoDealer'       => __( '—— Auto Dealer', 'controlled-chaos-plugin' ),
-			'AutoPartsStore'   => __( '—— Auto Parts Store', 'controlled-chaos-plugin' ),
-			'AutoRental'       => __( '—— Auto Rental', 'controlled-chaos-plugin' ),
-			'AutoRepair'       => __( '—— Auto Repair', 'controlled-chaos-plugin' ),
-			'AutoWash'         => __( '—— Auto Wash', 'controlled-chaos-plugin' ),
-			'GasStation'       => __( '—— Gas Station', 'controlled-chaos-plugin' ),
-			'MotorcycleDealer' => __( '—— Motorcycle Dealer', 'controlled-chaos-plugin' ),
-			'MotorcycleRepair' => __( '—— Motorcycle Repair', 'controlled-chaos-plugin' ),
+		'AutomotiveBusiness' => __( '— Automotive Business', 'beeline-plugin' ),
+			'AutoBodyShop'     => __( '—— Auto Body Shop', 'beeline-plugin' ),
+			'AutoDealer'       => __( '—— Auto Dealer', 'beeline-plugin' ),
+			'AutoPartsStore'   => __( '—— Auto Parts Store', 'beeline-plugin' ),
+			'AutoRental'       => __( '—— Auto Rental', 'beeline-plugin' ),
+			'AutoRepair'       => __( '—— Auto Repair', 'beeline-plugin' ),
+			'AutoWash'         => __( '—— Auto Wash', 'beeline-plugin' ),
+			'GasStation'       => __( '—— Gas Station', 'beeline-plugin' ),
+			'MotorcycleDealer' => __( '—— Motorcycle Dealer', 'beeline-plugin' ),
+			'MotorcycleRepair' => __( '—— Motorcycle Repair', 'beeline-plugin' ),
 
-		'ChildCare'            => __( '— Child Care', 'controlled-chaos-plugin' ),
-		'Dentist'              => __( '— Dentist', 'controlled-chaos-plugin' ),
-		'DryCleaningOrLaundry' => __( '— Dry Cleaning or Laundry', 'controlled-chaos-plugin' ),
+		'ChildCare'            => __( '— Child Care', 'beeline-plugin' ),
+		'Dentist'              => __( '— Dentist', 'beeline-plugin' ),
+		'DryCleaningOrLaundry' => __( '— Dry Cleaning or Laundry', 'beeline-plugin' ),
 
 		// Emergency Services.
-		'EmergencyService' => __( '— Emergency Service', 'controlled-chaos-plugin' ),
-			'FireStation'   => __( '—— Fire Station', 'controlled-chaos-plugin' ),
-			'Hospital'      => __( '—— Hospital', 'controlled-chaos-plugin' ),
-			'PoliceStation' => __( '—— Police Station', 'controlled-chaos-plugin' ),
+		'EmergencyService' => __( '— Emergency Service', 'beeline-plugin' ),
+			'FireStation'   => __( '—— Fire Station', 'beeline-plugin' ),
+			'Hospital'      => __( '—— Hospital', 'beeline-plugin' ),
+			'PoliceStation' => __( '—— Police Station', 'beeline-plugin' ),
 
-		'EmploymentAgency' => __( '— Employment Agency', 'controlled-chaos-plugin' ),
+		'EmploymentAgency' => __( '— Employment Agency', 'beeline-plugin' ),
 
 		// Entertainment Businesses.
-		'EntertainmentBusiness' => __( '— Entertainment Business', 'controlled-chaos-plugin' ),
-			'AdultEntertainment' => __( '—— Adult Entertainment', 'controlled-chaos-plugin' ),
-			'AmusementPark'      => __( '—— Amusement Park', 'controlled-chaos-plugin' ),
-			'ArtGallery'         => __( '—— Art Gallery', 'controlled-chaos-plugin' ),
-			'Casino'             => __( '—— Casino', 'controlled-chaos-plugin' ),
-			'ComedyClub'         => __( '—— Comedy Club', 'controlled-chaos-plugin' ),
-			'MovieTheater'       => __( '—— Movie Theater', 'controlled-chaos-plugin' ),
-			'NightClub'          => __( '—— Night Club', 'controlled-chaos-plugin' ),
+		'EntertainmentBusiness' => __( '— Entertainment Business', 'beeline-plugin' ),
+			'AdultEntertainment' => __( '—— Adult Entertainment', 'beeline-plugin' ),
+			'AmusementPark'      => __( '—— Amusement Park', 'beeline-plugin' ),
+			'ArtGallery'         => __( '—— Art Gallery', 'beeline-plugin' ),
+			'Casino'             => __( '—— Casino', 'beeline-plugin' ),
+			'ComedyClub'         => __( '—— Comedy Club', 'beeline-plugin' ),
+			'MovieTheater'       => __( '—— Movie Theater', 'beeline-plugin' ),
+			'NightClub'          => __( '—— Night Club', 'beeline-plugin' ),
 
 		// Financial Services.
-		'FinancialService' => __( '— Financial Service', 'controlled-chaos-plugin' ),
-			'AccountingService' => __( '—— Accounting Service', 'controlled-chaos-plugin' ),
-			'AutomatedTeller'   => __( '—— Automated Teller', 'controlled-chaos-plugin' ),
-			'BankOrCreditUnion' => __( '—— Bank or Credit Union', 'controlled-chaos-plugin' ),
-			'InsuranceAgency'   => __( '—— Insurance Agency', 'controlled-chaos-plugin' ),
+		'FinancialService' => __( '— Financial Service', 'beeline-plugin' ),
+			'AccountingService' => __( '—— Accounting Service', 'beeline-plugin' ),
+			'AutomatedTeller'   => __( '—— Automated Teller', 'beeline-plugin' ),
+			'BankOrCreditUnion' => __( '—— Bank or Credit Union', 'beeline-plugin' ),
+			'InsuranceAgency'   => __( '—— Insurance Agency', 'beeline-plugin' ),
 
 		// Food Establishments.
-		'FoodEstablishment' => __( '— Food Establishment', 'controlled-chaos-plugin' ),
-			'Bakery'             => __( '—— Bakery', 'controlled-chaos-plugin' ),
-			'BarOrPub'           => __( '—— Bar or Pub', 'controlled-chaos-plugin' ),
-			'Brewery'            => __( '—— Brewery', 'controlled-chaos-plugin' ),
-			'CafeOrCoffeeShop'   => __( '—— Cafe or Coffee Shop', 'controlled-chaos-plugin' ),
-			'FastFoodRestaurant' => __( '—— Fast Food Restaurant', 'controlled-chaos-plugin' ),
-			'IceCreamShop'       => __( '—— Ice Cream Shop', 'controlled-chaos-plugin' ),
-			'Restaurant'         => __( '—— Restaurant', 'controlled-chaos-plugin' ),
-			'Winery'             => __( '—— Winery', 'controlled-chaos-plugin' ),
+		'FoodEstablishment' => __( '— Food Establishment', 'beeline-plugin' ),
+			'Bakery'             => __( '—— Bakery', 'beeline-plugin' ),
+			'BarOrPub'           => __( '—— Bar or Pub', 'beeline-plugin' ),
+			'Brewery'            => __( '—— Brewery', 'beeline-plugin' ),
+			'CafeOrCoffeeShop'   => __( '—— Cafe or Coffee Shop', 'beeline-plugin' ),
+			'FastFoodRestaurant' => __( '—— Fast Food Restaurant', 'beeline-plugin' ),
+			'IceCreamShop'       => __( '—— Ice Cream Shop', 'beeline-plugin' ),
+			'Restaurant'         => __( '—— Restaurant', 'beeline-plugin' ),
+			'Winery'             => __( '—— Winery', 'beeline-plugin' ),
 
 		// Government Offices.
-		'GovernmentOffice' => __( '— Government Office', 'controlled-chaos-plugin' ),
-			'PostOffice' => __( '—— Post Office', 'controlled-chaos-plugin' ),
+		'GovernmentOffice' => __( '— Government Office', 'beeline-plugin' ),
+			'PostOffice' => __( '—— Post Office', 'beeline-plugin' ),
 
 		// Health and Beauty Businesses.
-		'HealthAndBeautyBusiness' => __( '— Health and Beauty Business', 'controlled-chaos-plugin' ),
-			'BeautySalon'  => __( '—— Beauty Salon', 'controlled-chaos-plugin' ),
-			'DaySpa'       => __( '—— Day Spa', 'controlled-chaos-plugin' ),
-			'HairSalon'    => __( '—— Hair Salon', 'controlled-chaos-plugin' ),
-			'HealthClub'   => __( '—— Health Club', 'controlled-chaos-plugin' ),
-			'NailSalon'    => __( '—— Nail Salon', 'controlled-chaos-plugin' ),
-			'TattooParlor' => __( '—— Tattoo Parlor', 'controlled-chaos-plugin' ),
+		'HealthAndBeautyBusiness' => __( '— Health and Beauty Business', 'beeline-plugin' ),
+			'BeautySalon'  => __( '—— Beauty Salon', 'beeline-plugin' ),
+			'DaySpa'       => __( '—— Day Spa', 'beeline-plugin' ),
+			'HairSalon'    => __( '—— Hair Salon', 'beeline-plugin' ),
+			'HealthClub'   => __( '—— Health Club', 'beeline-plugin' ),
+			'NailSalon'    => __( '—— Nail Salon', 'beeline-plugin' ),
+			'TattooParlor' => __( '—— Tattoo Parlor', 'beeline-plugin' ),
 
 		// Home and Construction Businesses.
-		'HomeAndConstructionBusiness' => __( '— Home and Construction Business', 'controlled-chaos-plugin' ),
-			'Electrician'       => __( '—— Electrician', 'controlled-chaos-plugin' ),
-			'GeneralContractor' => __( '—— General Contractor', 'controlled-chaos-plugin' ),
-			'HVACBusiness'      => __( '—— HVAC Business', 'controlled-chaos-plugin' ),
-			'HousePainter'      => __( '—— House Painter', 'controlled-chaos-plugin' ),
-			'Locksmith'         => __( '—— Locksmith', 'controlled-chaos-plugin' ),
-			'MovingCompany'     => __( '—— MovingCompany', 'controlled-chaos-plugin' ),
-			'Plumber'           => __( '—— Plumber', 'controlled-chaos-plugin' ),
-			'RoofingContractor' => __( '—— Roofing Contractor', 'controlled-chaos-plugin' ),
+		'HomeAndConstructionBusiness' => __( '— Home and Construction Business', 'beeline-plugin' ),
+			'Electrician'       => __( '—— Electrician', 'beeline-plugin' ),
+			'GeneralContractor' => __( '—— General Contractor', 'beeline-plugin' ),
+			'HVACBusiness'      => __( '—— HVAC Business', 'beeline-plugin' ),
+			'HousePainter'      => __( '—— House Painter', 'beeline-plugin' ),
+			'Locksmith'         => __( '—— Locksmith', 'beeline-plugin' ),
+			'MovingCompany'     => __( '—— MovingCompany', 'beeline-plugin' ),
+			'Plumber'           => __( '—— Plumber', 'beeline-plugin' ),
+			'RoofingContractor' => __( '—— Roofing Contractor', 'beeline-plugin' ),
 
-		'InternetCafe' => __( '— Internet Cafe', 'controlled-chaos-plugin' ),
+		'InternetCafe' => __( '— Internet Cafe', 'beeline-plugin' ),
 
 		// Legal Services.
-		'LegalService' => __( '— Legal Service', 'controlled-chaos-plugin' ),
-			'Attorney' => __( '—— Attorney', 'controlled-chaos-plugin' ),
-			'Notary'   => __( '—— Notary', 'controlled-chaos-plugin' ),
+		'LegalService' => __( '— Legal Service', 'beeline-plugin' ),
+			'Attorney' => __( '—— Attorney', 'beeline-plugin' ),
+			'Notary'   => __( '—— Notary', 'beeline-plugin' ),
 
-		'Library' => __( '— Library', 'controlled-chaos-plugin' ),
+		'Library' => __( '— Library', 'beeline-plugin' ),
 
 		// Lodging Businesses.
-		'LodgingBusiness' => __( '— Lodging Business', 'controlled-chaos-plugin' ),
-			'BedAndBreakfast' => __( '—— Bed and Breakfast', 'controlled-chaos-plugin' ),
-			'Campground'      => __( '—— Campground', 'controlled-chaos-plugin' ),
-			'Hostel'          => __( '—— Hostel', 'controlled-chaos-plugin' ),
-			'Hotel'           => __( '—— Hotel', 'controlled-chaos-plugin' ),
-			'Motel'           => __( '—— Motel', 'controlled-chaos-plugin' ),
-			'Resort'          => __( '—— Resort', 'controlled-chaos-plugin' ),
+		'LodgingBusiness' => __( '— Lodging Business', 'beeline-plugin' ),
+			'BedAndBreakfast' => __( '—— Bed and Breakfast', 'beeline-plugin' ),
+			'Campground'      => __( '—— Campground', 'beeline-plugin' ),
+			'Hostel'          => __( '—— Hostel', 'beeline-plugin' ),
+			'Hotel'           => __( '—— Hotel', 'beeline-plugin' ),
+			'Motel'           => __( '—— Motel', 'beeline-plugin' ),
+			'Resort'          => __( '—— Resort', 'beeline-plugin' ),
 
-		'ProfessionalService' => __( '— Professional Service', 'controlled-chaos-plugin' ),
-		'RadioStation'        => __( '— Radio Station', 'controlled-chaos-plugin' ),
-		'RealEstateAgent'     => __( '— Real Estate Agent', 'controlled-chaos-plugin' ),
-		'RecyclingCenter'     => __( '— Recycling Center', 'controlled-chaos-plugin' ),
-		'SelfStorage'         => __( '— Self Storage', 'controlled-chaos-plugin' ),
-		'ShoppingCenter'      => __( '— Shopping Center', 'controlled-chaos-plugin' ),
+		'ProfessionalService' => __( '— Professional Service', 'beeline-plugin' ),
+		'RadioStation'        => __( '— Radio Station', 'beeline-plugin' ),
+		'RealEstateAgent'     => __( '— Real Estate Agent', 'beeline-plugin' ),
+		'RecyclingCenter'     => __( '— Recycling Center', 'beeline-plugin' ),
+		'SelfStorage'         => __( '— Self Storage', 'beeline-plugin' ),
+		'ShoppingCenter'      => __( '— Shopping Center', 'beeline-plugin' ),
 
 		// Sports Activity Locations.
-		'SportsActivityLocation' => __( '— Sports Activity Location', 'controlled-chaos-plugin' ),
-			'BowlingAlley'       => __( '—— Bowling Alley', 'controlled-chaos-plugin' ),
-			'ExerciseGym'        => __( '—— Exercise Gym', 'controlled-chaos-plugin' ),
-			'GolfCourse'         => __( '—— Golf Course', 'controlled-chaos-plugin' ),
-			'HealthClub'         => __( '—— Health Club', 'controlled-chaos-plugin' ),
-			'PublicSwimmingPool' => __( '—— Public Swimming Pool', 'controlled-chaos-plugin' ),
-			'SkiResort'          => __( '—— Ski Resort', 'controlled-chaos-plugin' ),
-			'SportsClub'         => __( '—— Sports Club', 'controlled-chaos-plugin' ),
-			'StadiumOrArena'     => __( '—— Stadium or Arena', 'controlled-chaos-plugin' ),
-			'TennisComplex'      => __( '—— Tennis Complex', 'controlled-chaos-plugin' ),
+		'SportsActivityLocation' => __( '— Sports Activity Location', 'beeline-plugin' ),
+			'BowlingAlley'       => __( '—— Bowling Alley', 'beeline-plugin' ),
+			'ExerciseGym'        => __( '—— Exercise Gym', 'beeline-plugin' ),
+			'GolfCourse'         => __( '—— Golf Course', 'beeline-plugin' ),
+			'HealthClub'         => __( '—— Health Club', 'beeline-plugin' ),
+			'PublicSwimmingPool' => __( '—— Public Swimming Pool', 'beeline-plugin' ),
+			'SkiResort'          => __( '—— Ski Resort', 'beeline-plugin' ),
+			'SportsClub'         => __( '—— Sports Club', 'beeline-plugin' ),
+			'StadiumOrArena'     => __( '—— Stadium or Arena', 'beeline-plugin' ),
+			'TennisComplex'      => __( '—— Tennis Complex', 'beeline-plugin' ),
 
 		// Store types.
-		'Store' => __( '— Store', 'controlled-chaos-plugin' ),
-			'AutoPartsStore'      => __( '—— Auto Parts Store', 'controlled-chaos-plugin' ),
-			'BikeStore'           => __( '—— Bike Store', 'controlled-chaos-plugin' ),
-			'BookStore'           => __( '—— Book Store', 'controlled-chaos-plugin' ),
-			'ClothingStore'       => __( '—— Clothing Store', 'controlled-chaos-plugin' ),
-			'ComputerStore'       => __( '—— Computer Store', 'controlled-chaos-plugin' ),
-			'ConvenienceStore'    => __( '—— Convenience Store', 'controlled-chaos-plugin' ),
-			'DepartmentStore'     => __( '—— Department Store', 'controlled-chaos-plugin' ),
-			'ElectronicsStore'    => __( '—— Electronics Store', 'controlled-chaos-plugin' ),
-			'Florist'             => __( '—— Florist', 'controlled-chaos-plugin' ),
-			'FurnitureStore'      => __( '—— Furniture Store', 'controlled-chaos-plugin' ),
-			'GardenStore'         => __( '—— Garden Store', 'controlled-chaos-plugin' ),
-			'GroceryStore'        => __( '—— Grocery Store', 'controlled-chaos-plugin' ),
-			'HardwareStore'       => __( '—— Hardware Store', 'controlled-chaos-plugin' ),
-			'HobbyShop'           => __( '—— Hobby Shop', 'controlled-chaos-plugin' ),
-			'HomeGoodsStore'      => __( '—— Home Goods Store', 'controlled-chaos-plugin' ),
-			'JewelryStore'        => __( '—— Jewelry Store', 'controlled-chaos-plugin' ),
-			'LiquorStore'         => __( '—— Liquor Store', 'controlled-chaos-plugin' ),
-			'MensClothingStore'   => __( '—— Mens Clothing Store', 'controlled-chaos-plugin' ),
-			'MobilePhoneStore'    => __( '—— Mobile Phone Store', 'controlled-chaos-plugin' ),
-			'MovieRentalStore'    => __( '—— Movie Rental Store', 'controlled-chaos-plugin' ),
-			'MusicStore'          => __( '—— Music Store', 'controlled-chaos-plugin' ),
-			'OfficeEquipmentStore'=> __( '—— Office Equipment Store', 'controlled-chaos-plugin' ),
-			'OutletStore'         => __( '—— Outlet Store', 'controlled-chaos-plugin' ),
-			'PawnShop'            => __( '—— Pawn Shop', 'controlled-chaos-plugin' ),
-			'PetStore'            => __( '—— Pet Store', 'controlled-chaos-plugin' ),
-			'ShoeStore'           => __( '—— Shoe Store', 'controlled-chaos-plugin' ),
-			'SportingGoodsStore'  => __( '—— Sporting Goods Store', 'controlled-chaos-plugin' ),
-			'TireShop'            => __( '—— Tire Shop', 'controlled-chaos-plugin' ),
-			'ToyStore'            => __( '—— Toy Store', 'controlled-chaos-plugin' ),
-			'WholesaleStore'      => __( '—— Wholesale Store', 'controlled-chaos-plugin' ),
+		'Store' => __( '— Store', 'beeline-plugin' ),
+			'AutoPartsStore'      => __( '—— Auto Parts Store', 'beeline-plugin' ),
+			'BikeStore'           => __( '—— Bike Store', 'beeline-plugin' ),
+			'BookStore'           => __( '—— Book Store', 'beeline-plugin' ),
+			'ClothingStore'       => __( '—— Clothing Store', 'beeline-plugin' ),
+			'ComputerStore'       => __( '—— Computer Store', 'beeline-plugin' ),
+			'ConvenienceStore'    => __( '—— Convenience Store', 'beeline-plugin' ),
+			'DepartmentStore'     => __( '—— Department Store', 'beeline-plugin' ),
+			'ElectronicsStore'    => __( '—— Electronics Store', 'beeline-plugin' ),
+			'Florist'             => __( '—— Florist', 'beeline-plugin' ),
+			'FurnitureStore'      => __( '—— Furniture Store', 'beeline-plugin' ),
+			'GardenStore'         => __( '—— Garden Store', 'beeline-plugin' ),
+			'GroceryStore'        => __( '—— Grocery Store', 'beeline-plugin' ),
+			'HardwareStore'       => __( '—— Hardware Store', 'beeline-plugin' ),
+			'HobbyShop'           => __( '—— Hobby Shop', 'beeline-plugin' ),
+			'HomeGoodsStore'      => __( '—— Home Goods Store', 'beeline-plugin' ),
+			'JewelryStore'        => __( '—— Jewelry Store', 'beeline-plugin' ),
+			'LiquorStore'         => __( '—— Liquor Store', 'beeline-plugin' ),
+			'MensClothingStore'   => __( '—— Mens Clothing Store', 'beeline-plugin' ),
+			'MobilePhoneStore'    => __( '—— Mobile Phone Store', 'beeline-plugin' ),
+			'MovieRentalStore'    => __( '—— Movie Rental Store', 'beeline-plugin' ),
+			'MusicStore'          => __( '—— Music Store', 'beeline-plugin' ),
+			'OfficeEquipmentStore'=> __( '—— Office Equipment Store', 'beeline-plugin' ),
+			'OutletStore'         => __( '—— Outlet Store', 'beeline-plugin' ),
+			'PawnShop'            => __( '—— Pawn Shop', 'beeline-plugin' ),
+			'PetStore'            => __( '—— Pet Store', 'beeline-plugin' ),
+			'ShoeStore'           => __( '—— Shoe Store', 'beeline-plugin' ),
+			'SportingGoodsStore'  => __( '—— Sporting Goods Store', 'beeline-plugin' ),
+			'TireShop'            => __( '—— Tire Shop', 'beeline-plugin' ),
+			'ToyStore'            => __( '—— Toy Store', 'beeline-plugin' ),
+			'WholesaleStore'      => __( '—— Wholesale Store', 'beeline-plugin' ),
 
-		'TelevisionStation'        => __( '— Television Station', 'controlled-chaos-plugin' ),
-		'TouristInformationCenter' => __( '— Tourist Information Center', 'controlled-chaos-plugin' ),
-		'TravelAgency'             => __( '— Travel Agency', 'controlled-chaos-plugin' ),
+		'TelevisionStation'        => __( '— Television Station', 'beeline-plugin' ),
+		'TouristInformationCenter' => __( '— Tourist Information Center', 'beeline-plugin' ),
+		'TravelAgency'             => __( '— Travel Agency', 'beeline-plugin' ),
 
-	'MedicalOrganization' => __( 'Medical Organization', 'controlled-chaos-plugin' ),
-	'NGO'                 => __( 'NGO (Non-Governmental Organization', 'controlled-chaos-plugin' ),
-	'PerformingGroup'     => __( 'Performing Group', 'controlled-chaos-plugin' ),
-	'SportsOrganization'  => __( 'Sports Organization', 'controlled-chaos-plugin' )
+	'MedicalOrganization' => __( 'Medical Organization', 'beeline-plugin' ),
+	'NGO'                 => __( 'NGO (Non-Governmental Organization', 'beeline-plugin' ),
+	'PerformingGroup'     => __( 'Performing Group', 'beeline-plugin' ),
+	'SportsOrganization'  => __( 'Sports Organization', 'beeline-plugin' )
 ];
 
 $options = get_option( 'schema_org_type' );
@@ -211,7 +211,7 @@ $html .= sprintf(
 	'<label for="schema_org_type"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
 	$args[0],
 	esc_attr( esc_url( 'https://schema.org/docs/full.html#C.Organization' ) ),
-	esc_attr( __( 'Read documentation for organization types', 'controlled-chaos-plugin' ) )
+	esc_attr( __( 'Read documentation for organization types', 'beeline-plugin' ) )
 );
 $html .= '</p>';
 

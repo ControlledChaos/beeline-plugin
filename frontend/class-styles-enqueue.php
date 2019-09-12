@@ -2,14 +2,14 @@
 /**
  * Enqueue frontend styles.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Frontend
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Frontend;
+namespace Beeline_Plugin\Frontend;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -74,10 +74,10 @@ class Enqueue_Frontend_Styles {
 	public function styles() {
 
 		// Non-vendor plugin styles.
-		wp_enqueue_style( CCP_ADMIN_SLUG, CCP_URL . 'assets/css/frontend.css', [], CCP_VERSION, 'all' );
+		wp_enqueue_style( BLP_ADMIN_SLUG, BLP_URL . 'assets/css/frontend.css', [], BLP_VERSION, 'all' );
 
 		// Fancybox 3.
-		if ( get_option( 'ccp_enqueue_fancybox_styles' ) ) {
+		if ( get_option( 'blp_enqueue_fancybox_styles' ) ) {
 
 			/**
 			 * Bail if the current theme supports ccd-fancybox by
@@ -86,23 +86,23 @@ class Enqueue_Frontend_Styles {
 			if ( current_theme_supports( 'ccd-fancybox' ) ) {
 				return;
 			} else {
-				wp_enqueue_style( CCP_ADMIN_SLUG . '-fancybox', CCP_URL . 'assets/css/jquery.fancybox.min.css', [], CCP_VERSION, 'all' );
+				wp_enqueue_style( BLP_ADMIN_SLUG . '-fancybox', BLP_URL . 'assets/css/jquery.fancybox.min.css', [], BLP_VERSION, 'all' );
 			}
 		}
 
 		// Slick.
-		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-slick', CCP_URL . 'assets/css/slick.min.css', [], CCP_VERSION, 'all' );
+		if ( get_option( 'blp_enqueue_slick' ) ) {
+			wp_enqueue_style( BLP_ADMIN_SLUG . '-slick', BLP_URL . 'assets/css/slick.min.css', [], BLP_VERSION, 'all' );
 		}
 
 		// Slick theme.
-		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-slick-theme', CCP_URL . 'assets/css/slick-theme.css', [], CCP_VERSION, 'all' );
+		if ( get_option( 'blp_enqueue_slick' ) ) {
+			wp_enqueue_style( BLP_ADMIN_SLUG . '-slick-theme', BLP_URL . 'assets/css/slick-theme.css', [], BLP_VERSION, 'all' );
 		}
 
 		// Tooltipster.
-		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			wp_enqueue_style( CCP_ADMIN_SLUG . '-tooltipster', CCP_URL . 'assets/css/tooltipster.bundle.min.css', [], CCP_VERSION, 'all' );
+		if ( get_option( 'blp_enqueue_tooltipster' ) ) {
+			wp_enqueue_style( BLP_ADMIN_SLUG . '-tooltipster', BLP_URL . 'assets/css/tooltipster.bundle.min.css', [], BLP_VERSION, 'all' );
 		}
 
 	}
@@ -116,11 +116,11 @@ class Enqueue_Frontend_Styles {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_enqueue_frontend_styles() {
+function blp_enqueue_frontend_styles() {
 
 	return Enqueue_Frontend_Styles::instance();
 
 }
 
 // Run an instance of the class.
-ccp_enqueue_frontend_styles();
+blp_enqueue_frontend_styles();

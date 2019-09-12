@@ -2,14 +2,14 @@
 /**
  * Settings fields for media options.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin;
+namespace Beeline_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -77,52 +77,52 @@ class Settings_Fields_Media {
         /**
          * Image crop settings.
          */
-        add_settings_field( 'ccp_hard_crop_medium', __( 'Medium size crop', 'controlled-chaos-plugin' ), [ $this, 'medium_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', 'controlled-chaos-plugin' ) ] );
+        add_settings_field( 'blp_hard_crop_medium', __( 'Medium size crop', 'beeline-plugin' ), [ $this, 'medium_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', 'beeline-plugin' ) ] );
 
-        add_settings_field( 'ccp_hard_crop_large', __( 'Large size crop', 'controlled-chaos-plugin' ), [ $this, 'large_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', 'controlled-chaos-plugin' ) ] );
+        add_settings_field( 'blp_hard_crop_large', __( 'Large size crop', 'beeline-plugin' ), [ $this, 'large_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', 'beeline-plugin' ) ] );
 
         register_setting(
             'media',
-            'ccp_hard_crop_medium'
+            'blp_hard_crop_medium'
         );
 
         register_setting(
             'media',
-            'ccp_hard_crop_large'
+            'blp_hard_crop_large'
         );
 
         /**
          * SVG options.
          */
-        add_settings_section( 'ccp-svg-settings', __( 'SVG Images', 'controlled-chaos-plugin' ), [ $this, 'svg_notice' ], 'media' );
+        add_settings_section( 'blp-svg-settings', __( 'SVG Images', 'beeline-plugin' ), [ $this, 'svg_notice' ], 'media' );
 
-        add_settings_field( 'ccp_add_svg_support', __( 'SVG Support', 'controlled-chaos-plugin' ), [ $this, 'svg_support' ], 'media', 'ccp-svg-settings', [ __( 'Add ability to upload SVG images to the media library.', 'controlled-chaos-plugin' ) ] );
+        add_settings_field( 'blp_add_svg_support', __( 'SVG Support', 'beeline-plugin' ), [ $this, 'svg_support' ], 'media', 'blp-svg-settings', [ __( 'Add ability to upload SVG images to the media library.', 'beeline-plugin' ) ] );
 
         register_setting(
             'media',
-            'ccp_add_svg_support'
+            'blp_add_svg_support'
         );
 
         /**
          * Fancybox settings.
          */
-        add_settings_section( 'ccp-media-settings', __( 'Fancybox', 'controlled-chaos-plugin' ), [ $this, 'fancybox_description' ], 'media' );
+        add_settings_section( 'blp-media-settings', __( 'Fancybox', 'beeline-plugin' ), [ $this, 'fancybox_description' ], 'media' );
 
-        add_settings_field( 'ccp_enqueue_fancybox_script', __( 'Enqueue Fancybox script', 'controlled-chaos-plugin' ), [ $this, 'fancybox_script' ], 'media', 'ccp-media-settings', [ __( 'Needed for lightbox functionality.', 'controlled-chaos-plugin' ) ] );
+        add_settings_field( 'blp_enqueue_fancybox_script', __( 'Enqueue Fancybox script', 'beeline-plugin' ), [ $this, 'fancybox_script' ], 'media', 'blp-media-settings', [ __( 'Needed for lightbox functionality.', 'beeline-plugin' ) ] );
 
         if ( ! current_theme_supports( 'ccd-fancybox' ) ) {
-            add_settings_field( 'ccp_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', 'controlled-chaos-plugin' ), [ $this, 'fancybox_styles' ], 'media', 'ccp-media-settings', [ __( 'Leave unchecked to use a custom stylesheet in a theme.', 'controlled-chaos-plugin' ) ] );
+            add_settings_field( 'blp_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', 'beeline-plugin' ), [ $this, 'fancybox_styles' ], 'media', 'blp-media-settings', [ __( 'Leave unchecked to use a custom stylesheet in a theme.', 'beeline-plugin' ) ] );
         }
 
         register_setting(
             'media',
-            'ccp_enqueue_fancybox_script'
+            'blp_enqueue_fancybox_script'
         );
 
         if ( ! current_theme_supports( 'ccd-fancybox' ) ) {
             register_setting(
                 'media',
-                'ccp_enqueue_fancybox_styles'
+                'blp_enqueue_fancybox_styles'
             );
         }
 
@@ -137,9 +137,9 @@ class Settings_Fields_Media {
      */
     public function medium_crop( $args ) {
 
-        $html = '<p><input type="checkbox" id="ccp_hard_crop_medium" name="ccp_hard_crop_medium" value="1" ' . checked( 1, get_option( 'ccp_hard_crop_medium' ), false ) . '/>';
+        $html = '<p><input type="checkbox" id="blp_hard_crop_medium" name="blp_hard_crop_medium" value="1" ' . checked( 1, get_option( 'blp_hard_crop_medium' ), false ) . '/>';
 
-        $html .= '<label for="ccp_hard_crop_medium"> '  . $args[0] . '</label></p>';
+        $html .= '<label for="blp_hard_crop_medium"> '  . $args[0] . '</label></p>';
 
         echo $html;
 
@@ -154,9 +154,9 @@ class Settings_Fields_Media {
      */
     public function large_crop( $args ) {
 
-        $html = '<p><input type="checkbox" id="ccp_hard_crop_large" name="ccp_hard_crop_large" value="1" ' . checked( 1, get_option( 'ccp_hard_crop_large' ), false ) . '/>';
+        $html = '<p><input type="checkbox" id="blp_hard_crop_large" name="blp_hard_crop_large" value="1" ' . checked( 1, get_option( 'blp_hard_crop_large' ), false ) . '/>';
 
-        $html .= '<label for="ccp_hard_crop_large"> '  . $args[0] . '</label></p>';
+        $html .= '<label for="blp_hard_crop_large"> '  . $args[0] . '</label></p>';
 
         echo $html;
 
@@ -171,13 +171,13 @@ class Settings_Fields_Media {
      */
     public function crop() {
 
-        if ( get_option( 'ccp_hard_crop_medium' ) ) {
+        if ( get_option( 'blp_hard_crop_medium' ) ) {
             update_option( 'medium_crop', 1 );
         } else {
             update_option( 'medium_crop', 0 );
         }
 
-        if ( get_option( 'ccp_hard_crop_large' ) ) {
+        if ( get_option( 'blp_hard_crop_large' ) ) {
             update_option( 'large_crop', 1 );
         } else {
             update_option( 'large_crop', 0 );
@@ -194,7 +194,7 @@ class Settings_Fields_Media {
      */
     public function svg_notice() {
 
-        $html = sprintf( '<p>%1s</p>', esc_html__( 'Use SVG images with caution! Only add support if you trust or examine each SVG file that you upload.', 'controlled-chaos-plugin' ) );
+        $html = sprintf( '<p>%1s</p>', esc_html__( 'Use SVG images with caution! Only add support if you trust or examine each SVG file that you upload.', 'beeline-plugin' ) );
 
         echo $html;
 
@@ -211,9 +211,9 @@ class Settings_Fields_Media {
      */
     public function svg_support( $args ) {
 
-        $html = '<p><input type="checkbox" id="ccp_add_svg_support" name="ccp_add_svg_support" value="1" ' . checked( 1, get_option( 'ccp_add_svg_support' ), false ) . '/>';
+        $html = '<p><input type="checkbox" id="blp_add_svg_support" name="blp_add_svg_support" value="1" ' . checked( 1, get_option( 'blp_add_svg_support' ), false ) . '/>';
 
-        $html .= '<label for="ccp_add_svg_support"> '  . $args[0] . '</label></p>';
+        $html .= '<label for="blp_add_svg_support"> '  . $args[0] . '</label></p>';
 
         echo $html;
 
@@ -229,7 +229,7 @@ class Settings_Fields_Media {
     public function fancybox_description() {
 
         $url  = 'http://fancyapps.com/fancybox/3/';
-        $html = sprintf( '<p>%1s <a href="%2s" target="_blank">%3s</a></p>', esc_html__( 'Documentation on the Fancybox website:', 'controlled-chaos-plugin' ), esc_url( $url ), $url );
+        $html = sprintf( '<p>%1s <a href="%2s" target="_blank">%3s</a></p>', esc_html__( 'Documentation on the Fancybox website:', 'beeline-plugin' ), esc_url( $url ), $url );
 
         echo $html;
 
@@ -244,9 +244,9 @@ class Settings_Fields_Media {
      */
     public function fancybox_script( $args ) {
 
-        $html = '<p><input type="checkbox" id="ccp_enqueue_fancybox_script" name="ccp_enqueue_fancybox_script" value="1" ' . checked( 1, get_option( 'ccp_enqueue_fancybox_script' ), false ) . '/>';
+        $html = '<p><input type="checkbox" id="blp_enqueue_fancybox_script" name="blp_enqueue_fancybox_script" value="1" ' . checked( 1, get_option( 'blp_enqueue_fancybox_script' ), false ) . '/>';
 
-        $html .= '<label for="ccp_enqueue_fancybox_script"> '  . $args[0] . '</label></p>';
+        $html .= '<label for="blp_enqueue_fancybox_script"> '  . $args[0] . '</label></p>';
 
         echo $html;
 
@@ -261,9 +261,9 @@ class Settings_Fields_Media {
      */
     public function fancybox_styles( $args ) {
 
-        $html = '<p><input type="checkbox" id="ccp_enqueue_fancybox_styles" name="ccp_enqueue_fancybox_styles" value="1" ' . checked( 1, get_option( 'ccp_enqueue_fancybox_styles' ), false ) . '/>';
+        $html = '<p><input type="checkbox" id="blp_enqueue_fancybox_styles" name="blp_enqueue_fancybox_styles" value="1" ' . checked( 1, get_option( 'blp_enqueue_fancybox_styles' ), false ) . '/>';
 
-        $html .= '<label for="ccp_enqueue_fancybox_styles"> '  . $args[0] . '</label></p>';
+        $html .= '<label for="blp_enqueue_fancybox_styles"> '  . $args[0] . '</label></p>';
 
         echo $html;
 
@@ -278,11 +278,11 @@ class Settings_Fields_Media {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_settings_fields_media() {
+function blp_settings_fields_media() {
 
 	return Settings_Fields_Media::instance();
 
 }
 
 // Run an instance of the class.
-ccp_settings_fields_media();
+blp_settings_fields_media();

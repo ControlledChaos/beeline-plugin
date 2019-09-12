@@ -2,14 +2,14 @@
 /**
  * Dashboard widget.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin\Dashboard
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Dashboard;
+namespace Beeline_Plugin\Admin\Dashboard;
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -72,9 +72,9 @@ class Dashboard_Widget {
 	public function widget_area() {
 
 		register_sidebar( [
-			'name'          => __( 'Dashboard Widget Area', 'controlled-chaos-plugin' ),
-			'id'            => 'ccp_dashboard_widget',
-			'description'   => __( 'Widgetize the Dasboard for users.', 'controlled-chaos-plugin' ),
+			'name'          => __( 'Dashboard Widget Area', 'beeline-plugin' ),
+			'id'            => 'blp_dashboard_widget',
+			'description'   => __( 'Widgetize the Dasboard for users.', 'beeline-plugin' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3>',
@@ -92,9 +92,9 @@ class Dashboard_Widget {
 	 */
 	public function dashboard_widget() {
 
-		$heading = apply_filters( 'ccp_dashboard_widget_heading', __( 'Sample Widget', 'controlled-chaos-plugin' ) );
+		$heading = apply_filters( 'blp_dashboard_widget_heading', __( 'Sample Widget', 'beeline-plugin' ) );
 
-		wp_add_dashboard_widget( 'ccp_dashboard_widget', $heading, [ $this, 'output' ] );
+		wp_add_dashboard_widget( 'blp_dashboard_widget', $heading, [ $this, 'output' ] );
 
 	}
 
@@ -107,17 +107,17 @@ class Dashboard_Widget {
 	 */
 	public function output() {
 
-		if ( is_active_sidebar( 'ccp_dashboard_widget' ) ) {
+		if ( is_active_sidebar( 'blp_dashboard_widget' ) ) {
 
-			dynamic_sidebar( 'ccp_dashboard_widget' );
+			dynamic_sidebar( 'blp_dashboard_widget' );
 
 		} else {
 
 			$placeholder = sprintf(
 				'<p><a href="%1s">%2s</a> %3s.</p>',
 				admin_url( 'widgets.php' ),
-				__( 'Add a widget', 'controlled-chaos-plugin' ),
-				__( 'to this area', 'controlled-chaos-plugin' )
+				__( 'Add a widget', 'beeline-plugin' ),
+				__( 'to this area', 'beeline-plugin' )
 			);
 
 			echo $placeholder;
@@ -135,11 +135,11 @@ class Dashboard_Widget {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_dashboard_widget() {
+function blp_dashboard_widget() {
 
 	return Dashboard_Widget::instance();
 
 }
 
 // Run an instance of the class.
-ccp_dashboard_widget();
+blp_dashboard_widget();

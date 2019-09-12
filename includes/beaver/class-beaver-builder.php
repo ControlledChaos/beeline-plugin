@@ -10,7 +10,7 @@
  * No namespace since Beaver Builder is not namespaced and class
  * references will throw an error without a namespace reference.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Beaver
  *
  * @since      1.0.0
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since  1.0.0
  * @access public
  */
-class CCP_Beaver_Builder {
+class BLP_Beaver_Builder {
 
 	/**
 	 * Constructor method
@@ -72,8 +72,8 @@ class CCP_Beaver_Builder {
 	 */
 	static public function load_modules() {
 
-		require_once CCP_PATH . 'includes/beaver/modules/basic-example/basic-example.php';
-		require_once CCP_PATH . 'includes/beaver/modules/example/example.php';
+		require_once BLP_PATH . 'includes/beaver/modules/basic-example/basic-example.php';
+		require_once BLP_PATH . 'includes/beaver/modules/example/example.php';
 
 	}
 
@@ -86,7 +86,7 @@ class CCP_Beaver_Builder {
 	 */
 	static public function register_fields( $fields ) {
 
-		$fields['ccp-custom-beaver-field'] = CCP_PATH . 'includes/beaver/fields/custom-fields.php';
+		$fields['blp-custom-beaver-field'] = BLP_PATH . 'includes/beaver/fields/custom-fields.php';
 		return $fields;
 
 	}
@@ -104,12 +104,12 @@ class CCP_Beaver_Builder {
 			return;
 		}
 
-		wp_enqueue_style( 'ccp-beaver-fields', CCP_URL . 'includes/beaver/assets/css/fields.css', [], '' );
-		wp_enqueue_script( 'ccp-beaver-fields', CCP_URL . 'includes/beaver/assets/js/fields.js', [], '', true );
+		wp_enqueue_style( 'blp-beaver-fields', BLP_URL . 'includes/beaver/assets/css/fields.css', [], '' );
+		wp_enqueue_script( 'blp-beaver-fields', BLP_URL . 'includes/beaver/assets/js/fields.js', [], '', true );
 
 	}
 
 }
 
 // Run the class.
-$ccp_beaver_builder = new CCP_Beaver_Builder;
+$blp_beaver_builder = new BLP_Beaver_Builder;

@@ -7,7 +7,7 @@
  * @link       http://ccdzine.com
  * @since      1.0.0
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes
  */
 
@@ -79,7 +79,7 @@ class Controlled_Chaos_Deactivate {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_deactivate() {
+function blp_deactivate() {
 
 	return Controlled_Chaos_Deactivate::instance();
 

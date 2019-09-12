@@ -4,7 +4,7 @@
  *
  * Select a custom post type to be displayed in place of latest posts on the front page.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
@@ -13,7 +13,7 @@
  * @todo       Move this from the Customizer.
  */
 
-namespace CC_Plugin\Includes\Post_Types_Taxes;
+namespace Beeline_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -86,7 +86,7 @@ class Post_Types_Front_Page {
 
 		if ( $query->is_home() && $query->is_front_page() && $query->is_main_query() ) {
 
-			$post_type  = get_option( 'ccp_front_page_post_type', '' );
+			$post_type  = get_option( 'blp_front_page_post_type', '' );
 			$post_types = get_post_types( [
 				'has_archive' => true,
 				'public'      => true,
@@ -119,14 +119,14 @@ class Post_Types_Front_Page {
 
 		$post_types['post'] = __( 'post' );
 
-		$wp_customize->add_setting( 'ccp_front_page_post_type', [
+		$wp_customize->add_setting( 'blp_front_page_post_type', [
 			'type'       => 'option',
 			'capability' => 'manage_options',
 			'default'    => 'post',
 		]);
 
-		$wp_customize->add_control( 'ccp_front_page_post_type', [
-			'label'           => __( 'Front Page Post Type', 'controlled-chaos-plugin' ),
+		$wp_customize->add_control( 'blp_front_page_post_type', [
+			'label'           => __( 'Front Page Post Type', 'beeline-plugin' ),
 			'type'            => 'radio',
 			'choices'         => $post_types,
 			'section'         => 'static_front_page',
@@ -161,11 +161,11 @@ class Post_Types_Front_Page {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_types_front_page() {
+function blp_types_front_page() {
 
 	return Post_Types_Front_Page::instance();
 
 }
 
 // Run an instance of the class.
-ccp_types_front_page();
+blp_types_front_page();

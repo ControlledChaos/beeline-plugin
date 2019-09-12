@@ -26,11 +26,11 @@ function db_reset_activate() {
 function db_reset_activation_checks() {
   if ( ! function_exists( 'spl_autoload_register' ) &&
         version_compare( phpversion(), '5.3', '<' ) ) {
-    return __( 'The WordPress Database Reset plugin requires at least PHP 5.3!', 'controlled-chaos-plugin' );
+    return __( 'The WordPress Database Reset plugin requires at least PHP 5.3!', 'beeline-plugin' );
   }
 
   if ( version_compare( get_bloginfo( 'version' ), '3.0', '<' ) ) {
-    return __( 'The WordPress Database Reset plugin requires at least WordPress 3.0!', 'controlled-chaos-plugin' );
+    return __( 'The WordPress Database Reset plugin requires at least WordPress 3.0!', 'beeline-plugin' );
   }
 
   return true;

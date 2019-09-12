@@ -2,7 +2,7 @@
 /**
  * The frontend functionality of the plugin.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Frontend
  *
  * @since      1.0.0
@@ -15,7 +15,7 @@
  * @link       Fancybox    http://fancyapps.com/fancybox/3/
  */
 
-namespace CC_Plugin\Frontend;
+namespace Beeline_Plugin\Frontend;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -70,7 +70,7 @@ class Frontend {
 		add_action( 'wp_enqueue_scripts', [ $this, 'deregister_dashicons' ] );
 
 		// Get inline options.
-		$jquery  = get_option( 'ccp_inline_jquery' );
+		$jquery  = get_option( 'blp_inline_jquery' );
 
 		// Inline jQuery.
 		if ( $jquery ) {
@@ -93,32 +93,32 @@ class Frontend {
 	public function dependencies() {
 
 		// Get inline options.
-		$scripts = get_option( 'ccp_inline_scripts' );
-		$styles  = get_option( 'ccp_inline_styles' );
+		$scripts = get_option( 'blp_inline_scripts' );
+		$styles  = get_option( 'blp_inline_styles' );
 
 		// Add styles inline if option selected.
 		if ( $styles ) {
-			require_once CCP_PATH . 'frontend/class-styles-inline.php';
+			require_once BLP_PATH . 'frontend/class-styles-inline.php';
 
 		// Otherwise enqueue styles.
 		} else {
-			require_once CCP_PATH . 'frontend/class-styles-enqueue.php';
+			require_once BLP_PATH . 'frontend/class-styles-enqueue.php';
 		}
 
 		// Add scripts inline if option selected.
 		if ( $scripts ) {
-			require_once CCP_PATH . 'frontend/class-scripts-inline.php';
+			require_once BLP_PATH . 'frontend/class-scripts-inline.php';
 
 		// Otherwise enqueue scripts.
 		} else {
-			require_once CCP_PATH . 'frontend/class-scripts-enqueue.php';
+			require_once BLP_PATH . 'frontend/class-scripts-enqueue.php';
 		}
 
 		// Clean up some scripts in the `head` section.
-		require_once CCP_PATH . 'frontend/class-head-scripts.php';
+		require_once BLP_PATH . 'frontend/class-head-scripts.php';
 
 		// Meta tags for SEO.
-		include_once CCP_PATH . 'frontend/meta-tags/class-meta-tags.php';
+		include_once BLP_PATH . 'frontend/meta-tags/class-meta-tags.php';
 
 	}
 
@@ -165,7 +165,7 @@ class Frontend {
 
 		if ( ! is_customize_preview() ) {
 
-			$jquery = file_get_contents( CCP_PATH . '/assets/js/jquery.min.js' );
+			$jquery = file_get_contents( BLP_PATH . '/assets/js/jquery.min.js' );
 
 			echo '<!-- jQuery --><script>' . $jquery . '</script>';
 
@@ -184,7 +184,7 @@ class Frontend {
 	 */
 	public function attachment_fancybox() {
 
-		if ( is_attachment() && get_option( 'ccp_enqueue_fancybox_script' ) ) { ?>
+		if ( is_attachment() && get_option( 'blp_enqueue_fancybox_script' ) ) { ?>
 
 			<script>
 			jQuery(document).ready(function() {
@@ -205,11 +205,11 @@ class Frontend {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_frontend() {
+function blp_frontend() {
 
 	return Frontend::instance();
 
 }
 
 // Run an instance of the class.
-ccp_frontend();
+blp_frontend();

@@ -4,7 +4,7 @@
  *
  * Add icons to the titles of ACF tab and accordion fields.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin
  *
  * @since      1.0.0
@@ -15,7 +15,7 @@
  * @todo       Modify the icon font.
  */
 
-namespace CC_Plugin\Admin;
+namespace Beeline_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -96,11 +96,11 @@ final class ACF_Tab_Icons {
 
 		// Register tab icons CSS from theme folder.
 		if ( file_exists( get_theme_file_path( 'assets/fonts/icons/afc-icons.css' ) ) ) {
-			wp_register_style( 'acf-tab-icons', get_theme_file_uri( 'assets/fonts/icons/afc-icons.css' ), [], CCP_VERSION );
+			wp_register_style( 'acf-tab-icons', get_theme_file_uri( 'assets/fonts/icons/afc-icons.css' ), [], BLP_VERSION );
 
 		// Register tab icons CSS from plugin folder.
 		} else {
-			wp_register_style( 'acf-tab-icons', CCP_URL . 'assets/fonts/icons/afc-icons.css', [], CCP_VERSION );
+			wp_register_style( 'acf-tab-icons', BLP_URL . 'assets/fonts/icons/afc-icons.css', [], BLP_VERSION );
 		}
 
 		// Enqueue styles & scripts.
@@ -121,7 +121,7 @@ final class ACF_Tab_Icons {
 		if ( file_exists( get_theme_file_path() . '/acf-title-icons/selection.json' ) ) {
 			$json_file = file_get_contents( get_theme_file_uri( '/acf-title-icons/selection.json' ) );
 		} else {
-			$json_file = file_get_contents( CCP_URL . 'assets/fonts/icons/selection.json' );
+			$json_file = file_get_contents( BLP_URL . 'assets/fonts/icons/selection.json' );
 		}
 
 		$json_content = json_decode( $json_file, true );
@@ -129,10 +129,10 @@ final class ACF_Tab_Icons {
 		if ( ! isset( $json_content['icons'] ) ) {
 
 			acf_render_field_setting( $field, [
-				'label'			=> __( 'Icon', 'controlled-chaos-plugin' ),
+				'label'			=> __( 'Icon', 'beeline-plugin' ),
 				'instructions'	=> '',
 				'type'			=> 'message',
-				'message'		=> __( 'No icons found', 'controlled-chaos-plugin' ),
+				'message'		=> __( 'No icons found', 'beeline-plugin' ),
 				'new_lines'		=> ''
 			] );
 
@@ -154,8 +154,8 @@ final class ACF_Tab_Icons {
 
 		// Select the icon for the tab.
 		acf_render_field_setting( $field, [
-			'label'			=> __( 'Icon', 'controlled-chaos-plugin' ),
-			'instructions'	=> __( 'Select an icon you want to show before the tab text.', 'controlled-chaos-plugin' ),
+			'label'			=> __( 'Icon', 'beeline-plugin' ),
+			'instructions'	=> __( 'Select an icon you want to show before the tab text.', 'beeline-plugin' ),
 			'type'			=> 'select',
 			'id'			=> $field['ID'] . 'accordion-select',
 			'name'			=> 'icon_class',
@@ -168,8 +168,8 @@ final class ACF_Tab_Icons {
 
 		// Option to show only the icon, not text.
 		acf_render_field_setting( $field, [
-			'label'			=> __( 'Show icon only', 'controlled-chaos-plugin'),
-			'instructions'	=> __( 'If set to <em>Yes</em>, you will see only the icon and no text.', 'controlled-chaos-plugin'),
+			'label'			=> __( 'Show icon only', 'beeline-plugin'),
+			'instructions'	=> __( 'If set to <em>Yes</em>, you will see only the icon and no text.', 'beeline-plugin'),
 			'name'			=> 'show_icon_only',
 			'type'			=> 'true_false',
 			'ui'			=> 1,
@@ -211,11 +211,11 @@ final class ACF_Tab_Icons {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_acf_icons() {
+function blp_acf_icons() {
 
 	return ACF_Tab_Icons::instance();
 
 }
 
 // Run an instance of the class.
-ccp_acf_icons();
+blp_acf_icons();

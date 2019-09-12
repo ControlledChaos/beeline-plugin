@@ -4,7 +4,7 @@
  *
  * This file must not be namespaced.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes
  *
  * @since      1.0.0
@@ -79,7 +79,7 @@ class Controlled_Chaos_Activate {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_activate() {
+function blp_activate() {
 
 	return Controlled_Chaos_Activate::instance();
 

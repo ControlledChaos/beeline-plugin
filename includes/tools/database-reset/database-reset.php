@@ -4,7 +4,7 @@
  *
  * Reset the WordPress database back to its original state.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Tools\Database_Reset
  *
  * @since      1.0.0
@@ -18,7 +18,7 @@
  * @todo       Test in a sacrificial install.
  */
 
-// namespace CC_Plugin\Includes\Tools\Database_Reset;
+// namespace Beeline_Plugin\Includes\Tools\Database_Reset;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

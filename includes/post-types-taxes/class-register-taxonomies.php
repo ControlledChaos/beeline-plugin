@@ -2,7 +2,7 @@
 /**
  * Register taxonomies.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
@@ -11,7 +11,7 @@
  * @link       https://codex.wordpress.org/Function_Reference/register_taxonomy
  */
 
-namespace CC_Plugin\Includes\Post_Types_Taxes;
+namespace Beeline_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -55,34 +55,34 @@ final class Taxes_Register {
          * Renaming:
          * Search case "Taxonomy" and replace with your post type singular name.
          * Search case "Taxonomies" and replace with your post type plural name.
-         * Search case "ccp_taxonomy" and replace with your taxonomy database name.
+         * Search case "blp_taxonomy" and replace with your taxonomy database name.
          * Search case "taxonomies" and replace with your taxonomy permalink slug.
          */
 
         $labels = [
-            'name'                       => __( 'Taxonomies', 'controlled-chaos-plugin' ),
-            'singular_name'              => __( 'Taxonomy', 'controlled-chaos-plugin' ),
-            'menu_name'                  => __( 'Taxonomy', 'controlled-chaos-plugin' ),
-            'all_items'                  => __( 'All Taxonomies', 'controlled-chaos-plugin' ),
-            'edit_item'                  => __( 'Edit Taxonomy', 'controlled-chaos-plugin' ),
-            'view_item'                  => __( 'View Taxonomy', 'controlled-chaos-plugin' ),
-            'update_item'                => __( 'Update Taxonomy', 'controlled-chaos-plugin' ),
-            'add_new_item'               => __( 'Add New Taxonomy', 'controlled-chaos-plugin' ),
-            'new_item_name'              => __( 'New Taxonomy', 'controlled-chaos-plugin' ),
-            'parent_item'                => __( 'Parent Taxonomy', 'controlled-chaos-plugin' ),
-            'parent_item_colon'          => __( 'Parent Taxonomy', 'controlled-chaos-plugin' ),
-            'popular_items'              => __( 'Popular Taxonomies', 'controlled-chaos-plugin' ),
-            'separate_items_with_commas' => __( 'Separate Taxonomies with commas', 'controlled-chaos-plugin' ),
-            'add_or_remove_items'        => __( 'Add or Remove Taxonomies', 'controlled-chaos-plugin' ),
-            'choose_from_most_used'      => __( 'Choose from the most used Taxonomies', 'controlled-chaos-plugin' ),
-            'not_found'                  => __( 'No Taxonomies Found', 'controlled-chaos-plugin' ),
-            'no_terms'                   => __( 'No Taxonomies', 'controlled-chaos-plugin' ),
-            'items_list_navigation'      => __( 'Taxonomies List Navigation', 'controlled-chaos-plugin' ),
-            'items_list'                 => __( 'Taxonomies List', 'controlled-chaos-plugin' )
+            'name'                       => __( 'Taxonomies', 'beeline-plugin' ),
+            'singular_name'              => __( 'Taxonomy', 'beeline-plugin' ),
+            'menu_name'                  => __( 'Taxonomy', 'beeline-plugin' ),
+            'all_items'                  => __( 'All Taxonomies', 'beeline-plugin' ),
+            'edit_item'                  => __( 'Edit Taxonomy', 'beeline-plugin' ),
+            'view_item'                  => __( 'View Taxonomy', 'beeline-plugin' ),
+            'update_item'                => __( 'Update Taxonomy', 'beeline-plugin' ),
+            'add_new_item'               => __( 'Add New Taxonomy', 'beeline-plugin' ),
+            'new_item_name'              => __( 'New Taxonomy', 'beeline-plugin' ),
+            'parent_item'                => __( 'Parent Taxonomy', 'beeline-plugin' ),
+            'parent_item_colon'          => __( 'Parent Taxonomy', 'beeline-plugin' ),
+            'popular_items'              => __( 'Popular Taxonomies', 'beeline-plugin' ),
+            'separate_items_with_commas' => __( 'Separate Taxonomies with commas', 'beeline-plugin' ),
+            'add_or_remove_items'        => __( 'Add or Remove Taxonomies', 'beeline-plugin' ),
+            'choose_from_most_used'      => __( 'Choose from the most used Taxonomies', 'beeline-plugin' ),
+            'not_found'                  => __( 'No Taxonomies Found', 'beeline-plugin' ),
+            'no_terms'                   => __( 'No Taxonomies', 'beeline-plugin' ),
+            'items_list_navigation'      => __( 'Taxonomies List Navigation', 'beeline-plugin' ),
+            'items_list'                 => __( 'Taxonomies List', 'beeline-plugin' )
         ];
 
         $options = [
-            'label'              => __( 'Taxonomies', 'controlled-chaos-plugin' ),
+            'label'              => __( 'Taxonomies', 'beeline-plugin' ),
             'labels'             => $labels,
             'public'             => true,
             'hierarchical'       => false,
@@ -106,9 +106,9 @@ final class Taxes_Register {
          * Register the taxonomy
          */
         register_taxonomy(
-            'ccp_taxonomy',
+            'blp_taxonomy',
             [
-                'ccp_post_type' // Change to your post type name.
+                'blp_post_type' // Change to your post type name.
             ],
             $options
         );
@@ -118,4 +118,4 @@ final class Taxes_Register {
 }
 
 // Run the class.
-$ccp_taxes = new Taxes_Register;
+$blp_taxes = new Taxes_Register;

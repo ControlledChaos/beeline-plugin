@@ -1,11 +1,11 @@
-/* global jQuery, _CCPCustomizerReset, ajaxurl, wp */
+/* global jQuery, _BLPCustomizerReset, ajaxurl, wp */
 
 jQuery(function ($) {
     var $container = $('#customize-header-actions');
 
 
-    var $button = $('<input type="submit" name="ccp-reset" id="ccp-reset" class="button-secondary button">')
-        .attr('value', _CCPCustomizerReset.reset)
+    var $button = $('<input type="submit" name="blp-reset" id="blp-reset" class="button-secondary button">')
+        .attr('value', _BLPCustomizerReset.reset)
         .css({
             'float': 'right',
             'margin-right': '10px',
@@ -18,10 +18,10 @@ jQuery(function ($) {
         var data = {
             wp_customize: 'on',
             action: 'customizer_reset',
-            nonce: _CCPCustomizerReset.nonce.reset
+            nonce: _BLPCustomizerReset.nonce.reset
         };
 
-        var r = confirm(_CCPCustomizerReset.confirm);
+        var r = confirm(_BLPCustomizerReset.confirm);
 
         if (!r) return;
 

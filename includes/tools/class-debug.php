@@ -2,7 +2,7 @@
 /**
  * The core plugin class.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Tools
  *
  * @since      1.0.0
@@ -12,7 +12,7 @@
  * @link       https://github.com/ControlledChaos/so-turn-on-debug
  */
 
-// namespace CC_Plugin\Includes\Tools;
+// namespace Beeline_Plugin\Includes\Tools;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -27,16 +27,16 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 if ( ! defined( 'DOING_AJAX' ) && ! defined( 'DOING_AUTOSAVE' ) ) {
-    add_action( 'admin_init', 'ccp_check_wp_debug_define' );
+    add_action( 'admin_init', 'blp_check_wp_debug_define' );
 }
 
-function ccp_check_wp_debug_define() {
+function blp_check_wp_debug_define() {
 	if ( defined( 'WP_DEBUG' ) && ! WP_DEBUG ) {
-		$dev_mode = get_option( 'ccp_site_development' );
+		$dev_mode = get_option( 'blp_site_development' );
 		if ( $dev_mode ) {
-			ccp_set_wp_debug_define( true );
+			blp_set_wp_debug_define( true );
 		} elseif ( false == $dev_mode )  {
-			ccp_set_wp_debug_define( false );
+			blp_set_wp_debug_define( false );
 		}
 	}
 }
@@ -49,14 +49,14 @@ function ccp_check_wp_debug_define() {
  * @param  bool $turn_it_on The value of WP_DEBUG constant
  * @return void
  */
-function ccp_set_wp_debug_define( $turn_it_on ) {
+function blp_set_wp_debug_define( $turn_it_on ) {
 	// If WP_DEBUG is already defined, no need to do anything
 	if( ( $turn_it_on && defined( 'WP_DEBUG' ) && WP_DEBUG ) ) {
 		return;
 	}
 
 	// Get path of the config file
-	$config_file_path = ccp_find_wpconfig_path();
+	$config_file_path = blp_find_wpconfig_path();
     if ( ! $config_file_path ) {
 		return;
     }
@@ -74,7 +74,7 @@ function ccp_set_wp_debug_define( $turn_it_on ) {
 	 * @access public
 	 * @param  string $turn_it_on The value of WP_DEBUG constant
 	*/
-	apply_filters( 'ccp_set_wp_debug_define', $turn_it_on );
+	apply_filters( 'blp_set_wp_debug_define', $turn_it_on );
 
 	// Lets find out if the constant WP_DEBUG is defined or not
 	$is_wp_debug_exist = false;
@@ -120,7 +120,7 @@ function ccp_set_wp_debug_define( $turn_it_on ) {
  * @access public
  * @return string|bool The path of wp-config.php file or false
  */
-function ccp_find_wpconfig_path() {
+function blp_find_wpconfig_path() {
 	$config_file     = ABSPATH . 'wp-config.php';
 	$config_file_alt = dirname( ABSPATH ) . '/wp-config.php';
 
@@ -142,16 +142,16 @@ function ccp_find_wpconfig_path() {
  * @access public
  * @return string|bool The path of wp-config.php file or false
  */
-register_deactivation_hook( __FILE__, 'ccp_deactivation' );
+register_deactivation_hook( __FILE__, 'blp_deactivation' );
 
-function ccp_deactivation() {
+function blp_deactivation() {
     // set WP_DEBUG back to false
-    set_ccp_wp_debug_off( false );
+    set_blp_wp_debug_off( false );
 }
 
-function set_ccp_wp_debug_off( $turn_it_off ) {
+function set_blp_wp_debug_off( $turn_it_off ) {
 	// Get path of the config file
-	$config_file_path = ccp_find_wpconfig_path();
+	$config_file_path = blp_find_wpconfig_path();
     if ( ! $config_file_path ) {
 		return;
     }
@@ -168,7 +168,7 @@ function set_ccp_wp_debug_off( $turn_it_off ) {
 	 *
 	 * @param string $turn_it_on The value of WP_DEBUG constant
 	*/
-	apply_filters( 'ccp_set_wp_debug_define', $turn_it_off );
+	apply_filters( 'blp_set_wp_debug_define', $turn_it_off );
 
 	// Lets find out if the constant WP_DEBUG is defined or not
 	$is_wp_debug_exist = true;

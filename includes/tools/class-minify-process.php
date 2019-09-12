@@ -2,7 +2,7 @@
 /**
  * Minify HTML source code.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes
  *
  * @since      1.0.0
@@ -11,7 +11,7 @@
  * @todo       Work out the errors thrown when the file is namespaced
  */
 
-// namespace CC_Plugin\Includes\Minify;
+// namespace Beeline_Plugin\Includes\Minify;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

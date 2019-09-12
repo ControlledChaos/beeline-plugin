@@ -2,14 +2,14 @@
 /**
  * Admin menu functions.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Admin
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin;
+namespace Beeline_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -61,9 +61,9 @@ class Admin_Menu {
         add_action( 'admin_menu', [ $this, 'hide' ] );
 
         // Hide ACF field groups UI.
-        if ( ccp_acf_options() ) {
+        if ( blp_acf_options() ) {
 
-            $options = get_field( 'ccp_admin_hide_links', 'option' );
+            $options = get_field( 'blp_admin_hide_links', 'option' );
             if ( $options && in_array( 'fields', $options ) ) {
                 add_filter( 'acf/settings/show_admin', '__return_false' );
             }
@@ -75,10 +75,10 @@ class Admin_Menu {
          */
 
         // Get links option.
-        if ( ccp_acf_options() ) {
-            $links = get_field( 'ccp_links_manager', 'option' );
+        if ( blp_acf_options() ) {
+            $links = get_field( 'blp_links_manager', 'option' );
         } else {
-            $links = get_option( 'ccp_hide_links' );
+            $links = get_option( 'blp_hide_links' );
         }
 
         // Return links filter.
@@ -116,10 +116,10 @@ class Admin_Menu {
         /**
          * If Advanced Custom Fields is active.
          */
-        if ( ccp_acf_options() ) {
+        if ( blp_acf_options() ) {
 
             // Get the multiple checkbox field.
-            $options = get_field( 'ccp_admin_hide_links', 'option' );
+            $options = get_field( 'blp_admin_hide_links', 'option' );
 
             // Hide Appearance link.
             if ( $options && in_array( 'themes', $options ) ) {
@@ -148,10 +148,10 @@ class Admin_Menu {
              */
 
             // Get options.
-            $appearance = get_option( 'ccp_hide_appearance' );
-            $plugins    = get_option( 'ccp_hide_plugins' );
-            $users      = get_option( 'ccp_hide_users' );
-            $tools      = get_option( 'ccp_hide_tools' );
+            $appearance = get_option( 'blp_hide_appearance' );
+            $plugins    = get_option( 'blp_hide_plugins' );
+            $users      = get_option( 'blp_hide_users' );
+            $tools      = get_option( 'blp_hide_tools' );
 
             // Hide Appearance link.
             if ( $appearance ) {
@@ -195,11 +195,11 @@ class Admin_Menu {
         global $menu, $submenu;
 
         // If ACF is active.
-        if ( ccp_acf_options() ) {
+        if ( blp_acf_options() ) {
 
             // Get the ACF field registered by this plugin.
-            $menus_link   = get_field( 'ccp_menus_position', 'option' );
-            $widgets_link = get_field( 'ccp_widgets_position', 'option' );
+            $menus_link   = get_field( 'blp_menus_position', 'option' );
+            $widgets_link = get_field( 'blp_widgets_position', 'option' );
 
             // Remove Menus and Widgets as submenu items of Appearances.
             if ( isset( $submenu['themes.php'] ) ) {
@@ -232,8 +232,8 @@ class Admin_Menu {
             // Add a new top-level Menus page.
             if ( 'default' != $menus_link ) {
                 add_menu_page(
-                    __( 'Menus', 'controlled-chaos-plugin' ),
-                    __( 'Menus', 'controlled-chaos-plugin' ),
+                    __( 'Menus', 'beeline-plugin' ),
+                    __( 'Menus', 'beeline-plugin' ),
                     'delete_others_pages',
                     'nav-menus.php',
                     '',
@@ -245,8 +245,8 @@ class Admin_Menu {
             // Add a new top-level Widgets page.
             if ( 'default' != $widgets_link ) {
                 add_menu_page(
-                    __( 'Widgets', 'controlled-chaos-plugin' ),
-                    __( 'Widgets', 'controlled-chaos-plugin' ),
+                    __( 'Widgets', 'beeline-plugin' ),
+                    __( 'Widgets', 'beeline-plugin' ),
                     'delete_others_pages',
                     'widgets.php',
                     '',
@@ -259,8 +259,8 @@ class Admin_Menu {
         } else {
 
             // Get the options from the standard fields.
-            $menus_link   = get_option( 'ccp_menus_position' );
-            $widgets_link = get_option( 'ccp_widgets_position' );
+            $menus_link   = get_option( 'blp_menus_position' );
+            $widgets_link = get_option( 'blp_widgets_position' );
 
             // Remove Menus and Widgets as submenu items of Appearances.
             if ( isset( $submenu['themes.php'] ) ) {
@@ -293,8 +293,8 @@ class Admin_Menu {
             // Add a new top-level Menus page.
             if ( $menus_link ) {
                 add_menu_page(
-                    __( 'Menus', 'controlled-chaos-plugin' ),
-                    __( 'Menus', 'controlled-chaos-plugin' ),
+                    __( 'Menus', 'beeline-plugin' ),
+                    __( 'Menus', 'beeline-plugin' ),
                     'delete_others_pages',
                     'nav-menus.php',
                     '',
@@ -306,8 +306,8 @@ class Admin_Menu {
             // Add a new top-level Widgets page.
             if ( $widgets_link ) {
                 add_menu_page(
-                    __( 'Widgets', 'controlled-chaos-plugin' ),
-                    __( 'Widgets', 'controlled-chaos-plugin' ),
+                    __( 'Widgets', 'beeline-plugin' ),
+                    __( 'Widgets', 'beeline-plugin' ),
                     'delete_others_pages',
                     'widgets.php',
                     '',
@@ -338,11 +338,11 @@ class Admin_Menu {
         global $current_screen;
 
         // If ACF is active.
-        if ( ccp_acf_options() ) {
+        if ( blp_acf_options() ) {
 
             // Get the ACF field registered by this plugin.
-            $menus_link   = get_field( 'ccp_menus_position', 'option' );
-            $widgets_link = get_field( 'ccp_widgets_position', 'option' );
+            $menus_link   = get_field( 'blp_menus_position', 'option' );
+            $widgets_link = get_field( 'blp_widgets_position', 'option' );
 
             // Set Menus parent as self.
             if ( $current_screen->base == 'nav-menus' && 'default' != $menus_link ) {
@@ -361,8 +361,8 @@ class Admin_Menu {
         } else {
 
             // Get the options from the standard fields.
-            $menus_link   = get_option( 'ccp_menus_position' );
-            $widgets_link = get_option( 'ccp_widgets_position' );
+            $menus_link   = get_option( 'blp_menus_position' );
+            $widgets_link = get_option( 'blp_widgets_position' );
 
             // Set Menus parent as self.
             if ( $current_screen->base == 'nav-menus' && $menus_link ) {
@@ -421,11 +421,11 @@ class Admin_Menu {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_admin_menu() {
+function blp_admin_menu() {
 
 	return Admin_Menu::instance();
 
 }
 
 // Run an instance of the class.
-ccp_admin_menu();
+blp_admin_menu();

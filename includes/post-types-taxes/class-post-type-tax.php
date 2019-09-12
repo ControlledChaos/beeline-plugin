@@ -2,14 +2,14 @@
 /**
  * Post types and taxonomies.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Post_Types_Taxes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes\Post_Types_Taxes;
+namespace Beeline_Plugin\Includes\Post_Types_Taxes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -71,25 +71,25 @@ class Post_Types_Taxes {
 	public function dependencies() {
 
 		// Resister cutsom post types.
-		require_once CCP_PATH . 'includes/post-types-taxes/class-register-post-types.php';
+		require_once BLP_PATH . 'includes/post-types-taxes/class-register-post-types.php';
 
 		// Resister cutsom taxonomies.
-		require_once CCP_PATH . 'includes/post-types-taxes/class-register-taxonomies.php';
+		require_once BLP_PATH . 'includes/post-types-taxes/class-register-taxonomies.php';
 
 		// Functions related to post types and taxonomies.
-		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-tax-functions.php';
+		require_once BLP_PATH . 'includes/post-types-taxes/class-post-type-tax-functions.php';
 
 		// Post types query on the blog front page.
-		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-front-page.php';
+		require_once BLP_PATH . 'includes/post-types-taxes/class-post-type-front-page.php';
 
 		// Number of posts per archive page.
-		require_once CCP_PATH . 'includes/post-types-taxes/class-posts-per-page.php';
+		require_once BLP_PATH . 'includes/post-types-taxes/class-posts-per-page.php';
 
 		// Drag & drop custom post and taxonomy orders.
-		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-order.php';
+		require_once BLP_PATH . 'includes/post-types-taxes/class-post-type-order.php';
 
 		// Capability to add custom taxonomy templates.
-		require_once CCP_PATH . 'includes/post-types-taxes/class-taxonomy-templates.php';
+		require_once BLP_PATH . 'includes/post-types-taxes/class-taxonomy-templates.php';
 
 	}
 
@@ -102,11 +102,11 @@ class Post_Types_Taxes {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_types_taxes() {
+function blp_types_taxes() {
 
 	return Post_Types_Taxes::instance();
 
 }
 
 // Run an instance of the class.
-ccp_types_taxes();
+blp_types_taxes();

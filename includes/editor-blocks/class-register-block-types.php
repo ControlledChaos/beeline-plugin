@@ -2,14 +2,14 @@
 /**
  * Register custom editor blocks.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Editor_Blocks
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes\Editor_Blocks;
+namespace Beeline_Plugin\Includes\Editor_Blocks;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -80,18 +80,18 @@ class Register_Blocks {
 
 		// Sample block scripts.
 		wp_enqueue_script(
-			'ccp-sample-block-script', // Handle.
+			'blp-sample-block-script', // Handle.
 			plugins_url( 'assets/js/sample-block.min.js', __FILE__ ), // Block.js: We register the block here.
 			[ 'wp-blocks', 'wp-i18n', 'wp-element' ], // Dependencies, defined above.
-			filemtime( CCP_PATH . 'includes/editor-blocks/assets/js/sample-block.min.js' ) // filemtime — Gets file modification time.
+			filemtime( BLP_PATH . 'includes/editor-blocks/assets/js/sample-block.min.js' ) // filemtime — Gets file modification time.
 		);
 
 		// Sample block styles.
 		wp_enqueue_style(
-			'ccp-sample-block', // Handle.
+			'blp-sample-block', // Handle.
 			plugins_url( 'assets/css/sample-block.min.css', __FILE__ ), // Block editor CSS.
 			[ 'wp-edit-blocks' ], // Dependency to include the CSS after it.
-			filemtime( CCP_PATH . 'includes/editor-blocks/assets/css/sample-block.min.css' ) // filemtime — Gets file modification time.
+			filemtime( BLP_PATH . 'includes/editor-blocks/assets/css/sample-block.min.css' ) // filemtime — Gets file modification time.
 		);
 
 	}
@@ -106,10 +106,10 @@ class Register_Blocks {
 	public function block_frontend_assets() {
 
 		wp_enqueue_style(
-			'ccp-sample-block',
+			'blp-sample-block',
 			plugins_url( 'includes/editor-blocks/assets/css/sample-block.css', __FILE__ ),
 			[ 'wp-blocks' ],
-			filemtime( CCP_PATH . 'includes/editor-blocks/assets/css/sample-block.css' )
+			filemtime( BLP_PATH . 'includes/editor-blocks/assets/css/sample-block.css' )
 		);
 
 	}
@@ -123,11 +123,11 @@ class Register_Blocks {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_register_blocks() {
+function blp_register_blocks() {
 
 	return Register_Blocks::instance();
 
 }
 
 // Run an instance of the class.
-ccp_register_blocks();
+blp_register_blocks();

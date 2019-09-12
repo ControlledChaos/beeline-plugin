@@ -2,14 +2,14 @@
 /**
  * Media functionality.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Media
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes\Media;
+namespace Beeline_Plugin\Includes\Media;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -94,13 +94,13 @@ class Media {
 	private function dependencies() {
 
 		// Add SVG media upload support.
-		include_once CCP_PATH . 'includes/media/class-svg-support.php';
+		include_once BLP_PATH . 'includes/media/class-svg-support.php';
 
 		// Replace WP gallery shortcode if Fancybox option is used.
-		$fancybox = get_option( 'ccp_enqueue_fancybox_script' );
+		$fancybox = get_option( 'blp_enqueue_fancybox_script' );
 
 		if ( $fancybox ) {
-			require_once CCP_PATH . 'includes/media/class-gallery-shortcode.php';
+			require_once BLP_PATH . 'includes/media/class-gallery-shortcode.php';
 		}
 
 	}
@@ -134,14 +134,14 @@ class Media {
 	public function image_sizes() {
 
 		// For link embedding and sharing on social sites.
-		add_image_size( __( 'meta-image', 'controlled-chaos-plugin' ), 1200, 630, true );
+		add_image_size( __( 'meta-image', 'beeline-plugin' ), 1200, 630, true );
 
 		/**
 		 * For use as featured image in admin columns.
 		 *
 		 * @see admin/class-admin-pages.php
 		 */
-		add_image_size( __( 'column-thumbnail', 'controlled-chaos-plugin' ), 48, 48, true );
+		add_image_size( __( 'column-thumbnail', 'beeline-plugin' ), 48, 48, true );
 
 	}
 
@@ -200,7 +200,7 @@ class Media {
 			$string = '/<a href="(.*?).(jpg|jpeg|png|gif|bmp|ico)"><img(.*?)class="(.*?)wp-image-(.*?)" \/><\/a>/i';
 			preg_match_all( $string, $content, $matches, PREG_SET_ORDER );
 
-			if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
+			if ( get_option( 'blp_enqueue_fancybox_script' ) ) {
 
 				// Check which attachment is referenced.
 				foreach ( $matches as $val ) {
@@ -284,7 +284,7 @@ class Media {
 		global $post;
 
 		// Apply a filter for conditional image sizes.
-		$size = apply_filters( 'ccp_rss_featured_image_size', 'medium' );
+		$size = apply_filters( 'blp_rss_featured_image_size', 'medium' );
 
 		/**
 		 * Use this layout only if the post has a featured image.
@@ -309,11 +309,11 @@ class Media {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_media() {
+function blp_media() {
 
 	return Media::instance();
 
 }
 
 // Run an instance of the class.
-ccp_media();
+blp_media();

@@ -2,14 +2,14 @@
 /**
  * Image meta tag.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Frontend\Meta_Tags
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Frontend\Meta_Tags;
+namespace Beeline_Plugin\Frontend\Meta_Tags;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -58,7 +58,7 @@ class Meta_Image {
 	public function __construct() {
 
 		// Add the image to meta tag.
-		add_action( 'ccp_meta_image_tag', [ $this, 'image' ] );
+		add_action( 'blp_meta_image_tag', [ $this, 'image' ] );
 
 	}
 
@@ -84,11 +84,11 @@ class Meta_Image {
 		global $post;
 
 		// If ACF is active.
-		if ( ccp_acf_options() ) {
+		if ( blp_acf_options() ) {
 
 			// Get the ACF image fields.
-			$blog_image    = get_field( 'ccp_meta_blog_image', 'option' );
-			$default_image = get_field( 'ccp_meta_default_image', 'option' );
+			$blog_image    = get_field( 'blp_meta_blog_image', 'option' );
+			$default_image = get_field( 'blp_meta_default_image', 'option' );
 
 			/**
 			 * Conditionally get images.
@@ -124,7 +124,7 @@ class Meta_Image {
 
 			// Otherwise use the image path defined in the core plugin file.
 			} else {
-				$src   = CCP_DEFAULT_META_IMAGE;
+				$src   = BLP_DEFAULT_META_IMAGE;
 			}
 
 			// Echo the image path in the meta tag.
@@ -149,7 +149,7 @@ class Meta_Image {
 
 			// Otherwise use the image path defined in the core plugin file.
 			} else {
-				$src = CCP_DEFAULT_META_IMAGE;
+				$src = BLP_DEFAULT_META_IMAGE;
 			}
 
 			// Echo the image path in the meta tag.
@@ -168,11 +168,11 @@ class Meta_Image {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_meta_image() {
+function blp_meta_image() {
 
 	return Meta_Image::instance();
 
 }
 
 // Run an instance of the class.
-ccp_meta_image();
+blp_meta_image();

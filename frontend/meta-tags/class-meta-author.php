@@ -2,14 +2,14 @@
 /**
  * Author meta tag.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Frontend\Meta_Tags
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Frontend\Meta_Tags;
+namespace Beeline_Plugin\Frontend\Meta_Tags;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -58,7 +58,7 @@ class Meta_Author {
 	public function __construct() {
 
 		// Add author to the meta tag.
-		add_action( 'ccp_meta_author_tag', [ $this, 'author' ] );
+		add_action( 'blp_meta_author_tag', [ $this, 'author' ] );
 
 	}
 
@@ -93,7 +93,7 @@ class Meta_Author {
 		}
 
 		// Apply a filter for conditional modification.
-		$author_tag = apply_filters( 'ccp_author_name', $author );
+		$author_tag = apply_filters( 'blp_author_name', $author );
 
 		// Echo the author display name in the meta tag.
 		echo $author_tag;
@@ -109,11 +109,11 @@ class Meta_Author {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_meta_author() {
+function blp_meta_author() {
 
 	return Meta_Author::instance();
 
 }
 
 // Run an instance of the class.
-ccp_meta_author();
+blp_meta_author();

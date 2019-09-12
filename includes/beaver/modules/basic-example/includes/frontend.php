@@ -8,7 +8,7 @@
  * $module An instance of your module class.
  * $settings The module's settings.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    Beeline_Plugin
  * @subpackage Includes\Beaver
  *
  * @since      1.0.0

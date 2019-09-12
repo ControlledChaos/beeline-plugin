@@ -7,19 +7,19 @@
 /**
  * Admin Header
  */
-.ccp-admin-header .admin-site-branding {
+.blp-admin-header .admin-site-branding {
   padding-top: 1.5em;
 }
 
-.ccp-admin-header .admin-site-branding .admin-site-title {
+.blp-admin-header .admin-site-branding .admin-site-title {
   margin-top: 0;
 }
 
-.ccp-admin-header .admin-navigation .admin-navigation-list {
+.blp-admin-header .admin-navigation .admin-navigation-list {
   margin-bottom: 0;
 }
 
-.ccp-admin-header .admin-navigation .admin-navigation-list li {
+.blp-admin-header .admin-navigation .admin-navigation-list li {
   display: inline;
   margin-right: 0.75em;
 }
@@ -243,7 +243,7 @@ html .backend-tabbed-content .ui-button.ui-state-disabled:hover {
  * Some of the unordered lists in the admin pages
  * look better with bullets.
  */
-.ccp_bullet-list {
+.blp_bullet-list {
   list-style: disc;
   margin-left: 1em;
 }
