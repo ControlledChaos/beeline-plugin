@@ -63,13 +63,16 @@ final class Init {
 	 */
 	private function __construct() {
 
+		// Stop site health checks.
+		add_filter( 'site_status_tests', [ $this, 'remove_tests' ] );
+
+		// Site Health page redirect.
+		add_action( 'current_screen', [ $this, 'health_redirect' ] );
+
 		// Remove the Draconian capital P filter.
 		remove_filter( 'the_title', 'capital_P_dangit', 11 );
 		remove_filter( 'the_content', 'capital_P_dangit', 11 );
 		remove_filter( 'comment_text', 'capital_P_dangit', 31 );
-
-		// Load classes to extend plugins.
-		add_action( 'init', [ $this, 'plugin_support' ] );
 
 	}
 
@@ -94,25 +97,8 @@ final class Init {
 		// Various media and media library functionality.
 		require_once BLP_PATH . 'includes/media/class-media.php';
 
-		/**
-		 * Register custom editor blocks.
-		 *
-		 * @todo Remove conditional statement when Gutenberg is in core?
-		 */
-		if ( blp_acf_pro() ) {
-			$editor = get_field( 'blp_classic_editor', 'option' );
-		} else {
-			$editor = get_option( 'blp_classic_editor' );
-		}
-		if ( ( blp_classicpress() || blp_new_cms() ) && ! $editor || is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
-			require_once BLP_PATH . 'includes/editor-blocks/class-register-block-types.php';
-		}
-
 		// Post types and taxonomies.
 		require_once BLP_PATH . 'includes/post-types-taxes/class-post-type-tax.php';
-
-		// User funtionality.
-		require_once BLP_PATH . 'includes/users/class-users.php';
 
 		// Dev and maintenance tools.
 		require_once BLP_PATH . 'includes/tools/class-tools.php';
@@ -120,27 +106,34 @@ final class Init {
 	}
 
 	/**
-	 * Load classes to extend plugins.
+	 * Stop site health checks
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return void
+	 * @return array Returns an array of allowed tests.
 	 */
-	public function plugin_support() {
+	public function remove_tests( $tests ) {
 
-		// Add Advanced Custom Fields Support.
-		if ( blp_acf() ) {
-			include_once BLP_PATH . 'includes/acf/class-extend-acf.php';
-		}
+		unset( $tests['direct']['php_version'] );
+		return $tests;
 
-		// Add Beaver Builder support.
-		if ( class_exists( 'FLBuilder' ) ) {
-			include_once BLP_PATH . 'includes/beaver/class-beaver-builder.php';
-		}
+	}
 
-		// Add Elementor support.
-		if ( class_exists( '\Elementor\Plugin' ) ) {
-			include_once BLP_PATH . 'includes/elementor/class-elementor.php';
+	/**
+	 * Site Health page redirect
+	 */
+	public function health_redirect() {
+
+		if ( is_admin() ) {
+
+			$screen = get_current_screen();
+
+			// If screen ID is site health.
+			if ( 'site-health' == $screen->id ) {
+				wp_redirect( admin_url() );
+				exit;
+			}
+
 		}
 
 	}

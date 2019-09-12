@@ -377,25 +377,6 @@ final class Settings_Fields_ACF {
 						'toggle'            => 1,
 						'return_format'     => 'value',
 					],
-					[
-						'key'               => 'field_5aaa73e38deb3',
-						'label'             => __( 'Restore Links Manager', 'beeline-plugin' ),
-						'name'              => 'blp_links_manager',
-						'type'              => 'true_false',
-						'instructions'      => __( 'The old Links Manager is hidden by default in newer WordPress installations.', 'beeline-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'message'           => '',
-						'default_value'     => 0,
-						'ui'                => 1,
-						'ui_on_text'        => __( 'Enabled', 'beeline-plugin' ),
-						'ui_off_text'       => __( 'Disabled', 'beeline-plugin' ),
-					],
 
 					/**
 					 * Admin Pages tab settings.
@@ -418,25 +399,6 @@ final class Settings_Fields_ACF {
 						],
 						'placement'         => 'top',
 						'endpoint'          => 0,
-					],
-					[
-						'key'               => 'field_5bef0eeeacdc1',
-						'label'             => __( 'Classic Editor', 'beeline-plugin' ),
-						'name'              => 'blp_classic_editor',
-						'type'              => 'true_false',
-						'instructions'      => __( 'Disables the block editor (a.k.a. Gutenberg) and restores the TinyMCE editor.', 'beeline-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'message'           => __( 'Use the classic editor', 'beeline-plugin' ),
-						'default_value'     => 0,
-						'ui'                => 1,
-						'ui_on_text'  => __( 'Yes', 'beeline-plugin' ),
-						'ui_off_text' => __( 'No', 'beeline-plugin' ),
 					],
 					[
 						'key'               => 'field_5bd8abd79a46d',

@@ -85,13 +85,6 @@ $tabs = [
         esc_html__( 'Media Options', 'beeline-plugin' )
 	),
 
-	// Dev Tools tab.
-    sprintf(
-        '<li><a href="%1s"><span class="dashicons dashicons-welcome-learn-more"></span> %2s</a></li>',
-        '#tools',
-        esc_html__( 'Development Tools', 'beeline-plugin' )
-    ),
-
 ];
 
 // Apply a filter to the tabs array for adding tabs.
@@ -123,9 +116,6 @@ $page_tabs = apply_filters( 'blp_tabs_page_about', $tabs );
 		</div>
 		<div id="media"><!-- Media Options content -->
 			<?php include_once BLP_PATH . 'admin/partials/plugin-page-media-options.php'; ?>
-		</div>
-		<div id="tools"><!-- Dev Tools content -->
-			<?php include_once BLP_PATH . 'admin/partials/plugin-page-dev-tools.php'; ?>
 		</div>
 		<?php // Hook for adding tabbed content.
 		do_action( 'blp_content_page_about_after' ); ?>

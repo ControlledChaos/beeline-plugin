@@ -70,25 +70,6 @@ class Admin_Menu {
 
         }
 
-        /**
-         * Show/Hide Links Manager link.
-         */
-
-        // Get links option.
-        if ( blp_acf_options() ) {
-            $links = get_field( 'blp_links_manager', 'option' );
-        } else {
-            $links = get_option( 'blp_hide_links' );
-        }
-
-        // Return links filter.
-        if ( $links ) {
-            add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-        } else {
-            add_filter( 'pre_option_link_manager_enabled', '__return_false' );
-        }
-
-
         // Move the Menus & Widgets menu items.
         add_action( 'admin_menu', [ $this, 'menus_widgets' ] );
 
@@ -112,6 +93,9 @@ class Admin_Menu {
 	 * @return void
      */
     public function hide() {
+
+		// Remove the Site Health page.
+		remove_submenu_page( 'tools.php', 'site-health.php' );
 
         /**
          * If Advanced Custom Fields is active.

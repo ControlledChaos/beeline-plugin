@@ -105,21 +105,6 @@ class Settings_Fields_Site_Admin_Pages {
 			'blp-site-admin-pages'
 		);
 
-		// Restore the TinyMCE editor.
-		add_settings_field(
-			'blp_classic_editor',
-			__( 'Classic Editor', 'beeline-plugin' ),
-			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'classic_editor' ],
-			'blp-site-admin-pages',
-			'blp-site-admin-pages',
-			[ esc_html__( 'Disable the block editor (a.k.a. Gutenberg) and restore the TinyMCE editor.', 'beeline-plugin' ) ]
-		);
-
-		register_setting(
-			'blp-site-admin-pages',
-			'blp_classic_editor'
-		);
-
 		// Use the admin header.
 		add_settings_field(
 			'blp_use_admin_header',

@@ -301,26 +301,6 @@ class Admin_Menu_Callbacks {
 
 	}
 
-	/**
-	 * Show/Hide Links Manager link.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function hide_links( $args ) {
-
-		$option = get_option( 'blp_hide_links' );
-
-		$html = '<p><input type="checkbox" id="blp_hide_links" name="blp_hide_links" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="blp_hide_links"> ' . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
 }
 
 /**

@@ -124,16 +124,6 @@ class Admin {
 			include_once BLP_PATH . 'admin/class-settings-fields-site-acf.php';
 		}
 
-		// Restore the TinyMCE editor.
-		if ( blp_acf_pro() ) {
-			$editor = get_field( 'blp_classic_editor', 'option' );
-		} else {
-			$editor = get_option( 'blp_classic_editor' );
-		}
-		if ( ( blp_classicpress() || blp_new_cms() ) && $editor ) {
-			include_once BLP_PATH . 'admin/classic-editor/classic-editor.php';
-		}
-
 		// Functions for dasboard widgets, excluding the welcome panel.
 		require_once BLP_PATH . 'admin/dashboard/class-dashboard.php';
 

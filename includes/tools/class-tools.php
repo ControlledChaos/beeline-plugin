@@ -7,9 +7,6 @@
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- *
- * @todo       Apply a filter to return true or false for
- *             hiding the Development Tools admin page.
  */
 
 namespace Beeline_Plugin\Includes\Tools;
@@ -62,15 +59,9 @@ class Tools {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return void Constructor method is empty.
-	 *              Change to `self` if used.
+	 * @return void
 	 */
-	public function __construct() {
-
-		add_filter( 'acf/settings/save_json', [ $this, 'acf_json_save_point' ], 20 );
-		add_filter( 'acf/settings/load_json', [ $this, 'acf_json_load_point' ], 20 );
-
-	}
+	public function __construct() {}
 
 	/**
 	 * Load the required dependencies for this plugin.
@@ -82,70 +73,11 @@ class Tools {
 	private function dependencies() {
 
 		// Minify HTML source code.
-		$debug = get_option( 'blp_debug_mode' );
-
-		require_once BLP_PATH . 'includes/tools/class-debug.php';
-
-		// Include the RTL (right to left) test if option selected.
-		$rtl = get_option( 'blp_rtl_test' );
-
-		if ( $rtl ) {
-			require_once BLP_PATH . 'includes/tools/class-rtl-test.php';
-		}
-
-		// Minify HTML source code.
 		$minify = get_option( 'blp_html_minify' );
 
 		if ( $minify ) {
 			require_once BLP_PATH . 'includes/tools/class-minify-process.php';
 		}
-
-		// Live theme test.
-		$theme_test = get_option( 'blp_theme_test' );
-
-		if ( $theme_test ) {
-			include_once BLP_PATH . 'includes/tools/class-theme-test.php';
-		}
-
-		// Database reset.
-		$database_reset = get_option( 'blp_database_reset' );
-
-		if ( $database_reset ) {
-			require_once BLP_PATH . 'includes/tools/database-reset/database-reset.php';
-		}
-
-		// Customizer reset.
-		$customizer_reset = get_option( 'blp_customizer_reset' );
-
-		if ( $customizer_reset ) {
-			require_once BLP_PATH . 'includes/tools/customizer-reset/customizer-reset.php';
-		}
-
-	}
-
-	public function acf_json_save_point( $path ) {
-
-		// update path
-		$path = plugin_dir_path( __DIR__ ) . '/acf-json';
-
-
-		// return
-		return $path;
-
-	}
-
-	public function acf_json_load_point( $paths ) {
-
-		// remove original path (optional)
-		unset( $paths[0] );
-
-
-		// append path
-		$paths[] = plugin_dir_path( __DIR__ ) . '/acf-json';
-
-
-		// return
-		return $paths;
 
 	}
 

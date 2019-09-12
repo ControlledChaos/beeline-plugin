@@ -285,21 +285,6 @@ class Settings_Fields_Site_Admin_Menu {
 			'blp_hide_tools'
 		);
 
-		// Show/Hide Links Manager link.
-		add_settings_field(
-			'blp_hide_links',
-			__( 'Restore Links Manager', 'beeline-plugin' ),
-			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_links' ],
-			'blp-site-admin-menu',
-			'blp-site-admin-menu',
-			[ esc_html__( 'The old Links Manager is hidden by default in newer WordPress/ClassicPress installations', 'beeline-plugin' ) ]
-		);
-
-		register_setting(
-			'blp-site-admin-menu',
-			'blp_hide_links'
-		);
-
 	}
 
 }
