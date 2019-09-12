@@ -149,10 +149,7 @@ final class Settings_Fields_ACF {
 							'id'    => '',
 						],
 						'choices'           => [
-							'gutenberg' => __( 'Try Gutenberg', 'beeline-plugin' ),
 							'welcome'   => __( 'Welcome', 'beeline-plugin' ),
-							'news'      => __( 'WordPress News', 'beeline-plugin' ),
-							'quick'     => __( 'Quick Press', 'beeline-plugin' ),
 							'at_glance' => __( 'At a Glance', 'beeline-plugin' ),
 							'activity'  => __( 'Activity', 'beeline-plugin' ),
 						],

@@ -167,36 +167,6 @@ class Settings_Fields_Site_Dashboard {
 			'blp_remove_welcome_dismiss'
 		);
 
-		// Hide WordPress News widget.
-		add_settings_field(
-			'blp_hide_wp_news',
-			__( 'Hide WordPress News', 'beeline-plugin' ),
-			[ Callbacks::instance(), 'hide_wp_news' ],
-			'blp-site-dashboard',
-			'blp-site-dashboard',
-			[ esc_html__( 'Hide the WordPress News widget on the Dashboard', 'beeline-plugin' ) ]
-		);
-
-		register_setting(
-			'blp-site-dashboard',
-			'blp_hide_wp_news'
-		);
-
-		// Hide Quick Draft (QuickPress) widget.
-		add_settings_field(
-			'blp_hide_quickpress',
-			__( 'Hide Quick Draft', 'beeline-plugin' ),
-			[ Callbacks::instance(), 'hide_quickpress' ],
-			'blp-site-dashboard',
-			'blp-site-dashboard',
-			[ esc_html__( 'Hide the Quick Draft widget on the Dashboard', 'beeline-plugin' ) ]
-		);
-
-		register_setting(
-			'blp-site-dashboard',
-			'blp_hide_quickpress'
-		);
-
 		// Hide At a Glance widget.
 		add_settings_field(
 			'blp_hide_at_glance',

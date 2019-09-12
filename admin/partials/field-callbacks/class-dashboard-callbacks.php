@@ -138,46 +138,6 @@ class Dashboard_Callbacks {
 	}
 
 	/**
-	 * Hide WordPress News widget.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function hide_wp_news( $args ) {
-
-		$option = get_option( 'blp_hide_wp_news' );
-
-		$html = '<p><input type="checkbox" id="blp_hide_wp_news" name="blp_hide_wp_news" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="blp_hide_wp_news"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Hide Quick Draft (QuickPress) widget.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function hide_quickpress( $args ) {
-
-		$option = get_option( 'blp_hide_quickpress' );
-
-		$html = '<p><input type="checkbox" id="blp_hide_quickpress" name="blp_hide_quickpress" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="blp_hide_quickpress"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
 	 * Hide At a Glance widget.
 	 *
 	 * @since  1.0.0
