@@ -307,83 +307,6 @@ function blp_deactivate_plugin() {
 }
 
 /**
- * Add a link to the plugin's about page on the plugins page.
- *
- * The about page in its original form is intended to be read by
- * developers for getting familiar with the plugin, so it is
- * included in the admin menu under plugins.
- *
- * If you would like to link the page elsewhere as you make it your own then
- * do so in admin/class-admin-pages.php, in the about_plugin method.
- *
- * Uses the universal slug partial for admin pages. Set this
- * slug in the core plugin file.
- *
- * @param  array $links Default plugin links on the 'Plugins' admin page.
- * @since  1.0.0
- * @access public
- * @return mixed[] Returns an HTML string for the about page link.
- *                 Returns an array of the about link with the default plugin links.
- * @link   https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
- */
-function blp_about_link( $links ) {
-
-	/**
-	 * Site about page link depends on the admin menu setting.
-	 *
-	 * @since  1.0.0
-	 * @return string returns the URL of the page with parent or not.
-	 */
-
-	if ( is_admin() ) {
-
-		// If Advanced Custom Fields is active.
-		if ( blp_acf_options() ) {
-
-			// Get the field.
-			$acf_position = get_field( 'blp_site_plugin_link_position', 'option' );
-
-			// Return true if the field is set to `top`.
-			if ( 'top' == $acf_position ) {
-				$position = true;
-
-			// Otherwise return `false`.
-			} else {
-				$position = false;
-			}
-
-		// If ACF is not active, get the field from the WordPress options page.
-		} else {
-
-			// Get the field.
-			$position = get_option( 'blp_site_plugin_link_position' );
-		}
-
-		if ( true == $position ) {
-			$url = admin_url( 'index.php?page=' . BLP_ADMIN_SLUG . '-settings' );
-		} else {
-			$url = admin_url( 'admin.php?page=' . BLP_ADMIN_SLUG . '-settings' );
-		}
-
-		// Create new settings link array as a variable.
-		$about_page = [
-			sprintf(
-				'<a href="%1s" class="' . BLP_ADMIN_SLUG . '-page-link">%2s</a>',
-				admin_url( 'plugins.php?page=' . BLP_ADMIN_SLUG . '-page' ),
-				esc_attr( 'Documentation', 'beeline-plugin' )
-			),
-		];
-
-		// Merge the new settings array with the default array.
-		return array_merge( $about_page, $links );
-
-	}
-
-}
-// Filter the default settings links with new array.
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'blp_about_link' );
-
-/**
  * Add links to the plugin settings pages on the plugins page.
  *
  * Change the links to those which fill your needs.
@@ -449,14 +372,6 @@ function blp_settings_links( $links, $file ) {
 				'<a href="%1s" class="' . BLP_ADMIN_SLUG . '-scripts-link">%2s</a>',
 				admin_url( 'options-general.php?page=' . BLP_ADMIN_SLUG . '-scripts' ),
 				esc_attr( 'Script Options', 'beeline-plugin' )
-			);
-
-			// Add a placeholder for an upgrade link.
-			$links[] = sprintf(
-				'<a href="%1s" title="%2s" class="' . BLP_ADMIN_SLUG . '-upgrade-link" style="color: #888; cursor: default;">%3s</a>',
-				''/* Add upgrade URL here */,
-				__( 'Upgrade not available', 'beeline-plugin' ),
-				esc_attr( 'Upgrade', 'beeline-plugin' )
 			);
 
 		}
