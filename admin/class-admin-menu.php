@@ -68,7 +68,11 @@ class Admin_Menu {
                 add_filter( 'acf/settings/show_admin', '__return_false' );
             }
 
-        }
+		}
+
+		// Move the Posts menu items.
+		add_filter( 'custom_menu_order', function() { return true; } );
+		add_filter( 'menu_order', [ $this, 'posts' ] );
 
         // Move the Menus & Widgets menu items.
         add_action( 'admin_menu', [ $this, 'menus_widgets' ] );
@@ -159,7 +163,44 @@ class Admin_Menu {
 
         }
 
-    }
+	}
+
+	/**
+     * Standard posts menu position
+     *
+     * @since  1.0.0
+	 * @access public
+     * @global array menu The admin menu array.
+     * @global array submenu The admin submenu array.
+	 * @return void
+     */
+    public function posts( $menu_order ) {
+
+		// New menu positions.
+		$new_positions = [
+			'edit.php' => 3,
+		];
+
+		// Helper function to move an element inside an array.
+		function move_element( &$array, $a, $b ) {
+			$out = array_splice( $array, $a, 1 );
+			array_splice( $array, $b, 0, $out );
+		}
+
+		/**
+		 * Traverse through the new positions and move the
+		 * items if found in the original menu_positions.
+		 */
+		foreach( $new_positions as $value => $new_index ) {
+
+			if ( $current_index = array_search( $value, $menu_order ) ) {
+				move_element( $menu_order, $current_index, $new_index );
+			}
+		}
+
+		return $menu_order;
+
+	}
 
     /**
      * Menus and Widgets menu position.

@@ -60,6 +60,12 @@ class Post_Type_Tax_Functions {
 		// Replace "Post" in the update messages.
 		add_filter( 'post_updated_messages', [ $this, 'update_messages' ], 99 );
 
+		// Change Posts to News.
+		add_action( 'admin_menu', [ $this, 'change_post_label' ] );
+		add_action( 'init', [ $this, 'change_post_object' ] );
+		add_action( 'admin_menu', [ $this, 'menu_news_icon' ] );
+		add_filter( 'post_updated_messages', [ $this, 'news_messages' ] );
+
 	}
 
 	/**
@@ -143,6 +149,73 @@ class Post_Type_Tax_Functions {
 
 		}
 
+		return $messages;
+	}
+
+	/**
+	 * Change posts position
+	 */
+	function change_post_label() {
+		global $menu;
+		global $submenu;
+		$menu[5][0] = 'News';
+		$submenu['edit.php'][5][0]  = __( 'News', 'beeline-plugin' );
+		$submenu['edit.php'][10][0] = __( 'Add News', 'beeline-plugin' );
+		$submenu['edit.php'][16][0] = __( 'News Tags', 'beeline-plugin' );
+		echo '';
+	}
+
+	/**
+	 * Change posts labels
+	 */
+	function change_post_object() {
+		global $wp_post_types;
+		$labels = &$wp_post_types['post']->labels;
+		$labels->name               = __( 'News', 'beeline-plugin' );
+		$labels->singular_name      = __( 'News', 'beeline-plugin' );
+		$labels->add_new            = __( 'Add News', 'beeline-plugin' );
+		$labels->add_new_item       = __( 'Add News', 'beeline-plugin' );
+		$labels->edit_item          = __( 'Edit News', 'beeline-plugin' );
+		$labels->new_item           = __( 'News', 'beeline-plugin' );
+		$labels->view_item          = __( 'View News', 'beeline-plugin' );
+		$labels->search_items       = __( 'Search News', 'beeline-plugin' );
+		$labels->not_found          = __( 'No News found', 'beeline-plugin' );
+		$labels->not_found_in_trash = __( 'No News found in Trash', 'beeline-plugin' );
+		$labels->all_items          = __( 'All News', 'beeline-plugin' );
+		$labels->menu_name          = __( 'News', 'beeline-plugin' );
+		$labels->name_admin_bar     = __( 'News', 'beeline-plugin' );
+	}
+
+	// Change the pin icon to a megaphone
+	function menu_news_icon() {
+		global $menu;
+		foreach ( $menu as $key => $val ) {
+			if ( __( 'News') == $val[0] ) {
+				$menu[$key][6] = 'dashicons-megaphone';
+			}
+		}
+	}
+
+	// Change post messages
+	function news_messages( $messages ) {
+		global $post, $post_ID;
+
+		$messages['post'] = array(
+			0  => '', // Unused. Messages start at index 1.
+			1  => sprintf( __( 'News Updated. <a href="%s">View News Post</a>', 'beeline-plugin' ), esc_url( get_permalink( $post_ID ) ) ),
+			2  => __( 'Custom field updated.', 'beeline-plugin' ),
+			3  => __( 'Custom field deleted.', 'beeline-plugin' ),
+			4  => __( 'News updated.', 'beeline-plugin' ),
+			/* translators: %s: date and time of the revision */
+			5  => isset( $_GET['revision'] ) ? sprintf( __( 'News post restored to revision from %s', 'beeline-plugin' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			6  => sprintf( __( 'News published. <a href="%s">View News Post</a>', 'beeline-plugin' ), esc_url( get_permalink( $post_ID ) ) ),
+			7  => __( 'News saved.' ),
+			8  => sprintf( __( 'News submitted. <a target="_blank" href="%s">Preview News Post</a>', 'beeline-plugin' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+			9  => sprintf( __( 'News scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview News Post</a>', 'beeline-plugin' ),
+			// translators: Publish box date format, see http://php.net/date
+			date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
+			10 => sprintf( __( 'News draft updated. <a target="_blank" href="%s">Preview News Post</a>', 'beeline-plugin' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+		);
 		return $messages;
 	}
 
