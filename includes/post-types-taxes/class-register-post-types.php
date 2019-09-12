@@ -35,13 +35,13 @@ final class Post_Types_Register {
 	 */
 	public function __construct() {
 
-        // Register custom post types.
+        // Register client types.
 		add_action( 'init', [ $this, 'register' ] );
 
 	}
 
     /**
-     * Register custom post types.
+     * Register client types.
      *
      * Note for WordPress 5.0 or greater:
      * If you want your post type to adopt the block edit_form_image_editor
@@ -54,56 +54,50 @@ final class Post_Types_Register {
     public function register() {
 
         /**
-         * Post Type: Sample custom post (Custom Posts).
-         *
-         * Renaming:
-         * Search case "Custom Post" and replace with your post type capitalized name.
-         * Search case "custom post" and replace with your post type lowercase name.
-         * Search case "blp_post_type" and replace with your post type database name.
-         * Search case "custom-posts" and replace with your post type archive permalink slug.
+         * Post Type: Clients
          */
 
         $labels = [
-            'name'                  => __( 'Custom Posts', 'beeline-plugin' ),
-            'singular_name'         => __( 'Custom Post', 'beeline-plugin' ),
-            'menu_name'             => __( 'Custom Posts', 'beeline-plugin' ),
-            'all_items'             => __( 'All Custom Posts', 'beeline-plugin' ),
+            'name'                  => __( 'Beeline Clients', 'beeline-plugin' ),
+            'singular_name'         => __( 'Client', 'beeline-plugin' ),
+            'menu_name'             => __( 'Clients', 'beeline-plugin' ),
+            'all_items'             => __( 'All Clients', 'beeline-plugin' ),
             'add_new'               => __( 'Add New', 'beeline-plugin' ),
-            'add_new_item'          => __( 'Add New Custom Post', 'beeline-plugin' ),
-            'edit_item'             => __( 'Edit Custom Post', 'beeline-plugin' ),
-            'new_item'              => __( 'New Custom Post', 'beeline-plugin' ),
-            'view_item'             => __( 'View Custom Post', 'beeline-plugin' ),
-            'view_items'            => __( 'View Custom Posts', 'beeline-plugin' ),
-            'search_items'          => __( 'Search Custom Posts', 'beeline-plugin' ),
-            'not_found'             => __( 'No Custom Posts Found', 'beeline-plugin' ),
-            'not_found_in_trash'    => __( 'No Custom Posts Found in Trash', 'beeline-plugin' ),
-            'parent_item_colon'     => __( 'Parent Custom Post', 'beeline-plugin' ),
-            'featured_image'        => __( 'Featured image for this custom post', 'beeline-plugin' ),
-            'set_featured_image'    => __( 'Set featured image for this custom post', 'beeline-plugin' ),
-            'remove_featured_image' => __( 'Remove featured image for this custom post', 'beeline-plugin' ),
-            'use_featured_image'    => __( 'Use as featured image for this custom post', 'beeline-plugin' ),
-            'archives'              => __( 'Custom Post archives', 'beeline-plugin' ),
-            'insert_into_item'      => __( 'Insert into Custom Post', 'beeline-plugin' ),
-            'uploaded_to_this_item' => __( 'Uploaded to this Custom Post', 'beeline-plugin' ),
-            'filter_items_list'     => __( 'Filter Custom Posts', 'beeline-plugin' ),
-            'items_list_navigation' => __( 'Custom Posts list navigation', 'beeline-plugin' ),
-            'items_list'            => __( 'Custom Posts List', 'beeline-plugin' ),
-            'attributes'            => __( 'Custom Post Attributes', 'beeline-plugin' ),
-            'parent_item_colon'     => __( 'Parent Custom Post', 'beeline-plugin' ),
+            'add_new_item'          => __( 'Add New Client', 'beeline-plugin' ),
+            'edit_item'             => __( 'Edit Client', 'beeline-plugin' ),
+            'new_item'              => __( 'New Client', 'beeline-plugin' ),
+            'view_item'             => __( 'View Client', 'beeline-plugin' ),
+            'view_items'            => __( 'View Clients', 'beeline-plugin' ),
+            'search_items'          => __( 'Search Clients', 'beeline-plugin' ),
+            'not_found'             => __( 'No Clients Found', 'beeline-plugin' ),
+            'not_found_in_trash'    => __( 'No Clients Found in Trash', 'beeline-plugin' ),
+            'parent_item_colon'     => __( 'Parent Client', 'beeline-plugin' ),
+            'featured_image'        => __( 'Featured image for this client', 'beeline-plugin' ),
+            'set_featured_image'    => __( 'Set featured image for this client', 'beeline-plugin' ),
+            'remove_featured_image' => __( 'Remove featured image for this client', 'beeline-plugin' ),
+            'use_featured_image'    => __( 'Use as featured image for this client', 'beeline-plugin' ),
+            'archives'              => __( 'Client archives', 'beeline-plugin' ),
+            'insert_into_item'      => __( 'Insert into Client', 'beeline-plugin' ),
+            'uploaded_to_this_item' => __( 'Uploaded to this Client', 'beeline-plugin' ),
+            'filter_items_list'     => __( 'Filter Clients', 'beeline-plugin' ),
+            'items_list_navigation' => __( 'Clients list navigation', 'beeline-plugin' ),
+            'items_list'            => __( 'Clients List', 'beeline-plugin' ),
+            'attributes'            => __( 'Client Attributes', 'beeline-plugin' ),
+            'parent_item_colon'     => __( 'Parent Client', 'beeline-plugin' ),
         ];
 
         // Apply a filter to labels for customization.
-        $labels = apply_filters( 'blp_post_type_labels', $labels );
+        $labels = apply_filters( 'client_labels', $labels );
 
         $options = [
-            'label'               => __( 'Custom Posts', 'beeline-plugin' ),
+            'label'               => __( 'Clients', 'beeline-plugin' ),
             'labels'              => $labels,
-            'description'         => __( 'Custom post type description.', 'beeline-plugin' ),
+            'description'         => __( 'Beeline clients.', 'beeline-plugin' ),
             'public'              => true,
             'publicly_queryable'  => true,
             'show_ui'             => true,
             'show_in_rest'        => false,
-            'rest_base'           => 'blp_post_type_rest_api',
+            'rest_base'           => 'client_rest_api',
             'has_archive'         => true,
             'show_in_menu'        => true,
             'exclude_from_search' => false,
@@ -111,34 +105,27 @@ final class Post_Types_Register {
             'map_meta_cap'        => true,
             'hierarchical'        => false,
             'rewrite'             => [
-                'slug'       => 'custom-posts',
+                'slug'       => 'clients',
                 'with_front' => true
             ],
-            'query_var'           => 'blp_post_type',
+            'query_var'           => 'client',
             'menu_position'       => 5,
-            'menu_icon'           => 'dashicons-admin-post',
+            'menu_icon'           => 'dashicons-archive',
             'supports'            => [
                 'title',
                 'editor',
                 'thumbnail',
-                'excerpt',
-                'trackbacks',
                 'custom-fields',
-                'comments',
-                'revisions',
                 'author',
-                'page-attributes',
-                'post-formats'
+                'page-attributes'
             ],
             'taxonomies'          => [
-                'category',
-                'post_tag',
-                'blp_taxonomy' // Change to your custom taxonomy name.
+                'client_type'
             ],
         ];
 
         // Apply a filter to arguments for customization.
-        $options = apply_filters( 'blp_post_type_args', $options );
+        $options = apply_filters( 'client_args', $options );
 
         /**
          * Register the post type
@@ -146,7 +133,7 @@ final class Post_Types_Register {
          * Maximum 20 characters, cannot contain capital letters or spaces.
          */
         register_post_type(
-            'blp_post_type',
+            'client',
             $options
         );
 
@@ -155,4 +142,4 @@ final class Post_Types_Register {
 }
 
 // Run the class.
-$blp_post_types = new Post_Types_Register;
+$clients = new Post_Types_Register;
