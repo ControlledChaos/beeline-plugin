@@ -86,9 +86,6 @@ class Dashboard {
 	 */
 	private function dependencies() {
 
-        // Get the dashboard widget class.
-        require BLP_PATH . 'admin/dashboard/class-dashboard-widget.php';
-
         // Get the welcome panel class.
         require BLP_PATH . 'admin/dashboard/class-welcome.php';
 
