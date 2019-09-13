@@ -82,6 +82,25 @@ final class Fields_Page_Templates {
 				'title'  => __( 'Contact Page', 'beeline-plugin' ),
 				'fields' => [
 					[
+						'key'               => 'field_5d7c0409ac6cb',
+						'label'             => __( 'Contact Information', 'beeline-plugin' ),
+						'name'              => 'bl_contact_info',
+						'type'              => 'wysiwyg',
+						'instructions'      => __( 'Use for any message or contact details other than individual contact information. See below to add individual contacts.', 'beeline-plugin' ),
+						'required'          => 0,
+						'conditional_logic' => 0,
+						'wrapper'           => [
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						],
+						'default_value'     => '',
+						'tabs'              => 'all',
+						'toolbar'           => 'full',
+						'media_upload'      => 1,
+						'delay'             => 0,
+					],
+					[
 						'key'               => 'field_5d7bc28a0933c',
 						'label'             => __( 'Contacts', 'beeline-plugin' ),
 						'name'              => 'bl_contacts',
