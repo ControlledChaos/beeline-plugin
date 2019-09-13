@@ -156,7 +156,8 @@ final class Page_Templates {
 			return;
 		}
 
-		if ( is_page_template( 'contact-page.php' ) ) {
+		// Content for the contact page template.
+		if ( is_page() && is_page_template( 'contact-page.php' ) ) {
 			ob_start();
 
 			// Include the snippet content.
@@ -170,7 +171,13 @@ final class Page_Templates {
 	}
 
 	/**
-	 * Check if the template is assigned to the page
+	 * Locate the page template
+	 *
+	 * Adds a filter to the template include to determine if the page
+	 * has the template assigned and return it's path.
+	 *
+	 * This method is left intact for completeness but we are not using it.
+	 * Instead we will use a content filter if the template is assigned.
 	 *
 	 * @since  1.0.0
 	 * @access public
