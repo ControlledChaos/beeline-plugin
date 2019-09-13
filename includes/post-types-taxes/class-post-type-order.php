@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 // If Advanced Custom Fields is active.
-if ( blp_acf_options() ) {
+if ( blp_acf_pro() ) {
     $sort_order = get_field( 'blp_use_custom_sort_order', 'option' );
 
 // If Advanced Custom Fields is not active.

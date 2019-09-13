@@ -180,7 +180,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Site Settings section.
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 
 			add_settings_section( 'blp-registered-fields-activate', __( 'Registered Fields Activation', 'beeline-plugin' ), [ $this, 'registered_fields_activate' ], 'blp-registered-fields-activate' );
 
@@ -469,7 +469,7 @@ class Settings_Fields_Scripts {
 	 */
 	public function registered_fields_activate() {
 
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 
 			echo sprintf( '<p>%1s</p>', esc_html( 'The Controlled Chaos plugin registers custom fields for Advanced Custom Fields Pro that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'beeline-plugin' ) );
 
@@ -486,7 +486,7 @@ class Settings_Fields_Scripts {
 	 */
 	public function registered_fields_page_callback( $args ) {
 
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 
 			$html = '<p><input type="checkbox" id="blp_acf_activate_settings_page" name="blp_acf_activate_settings_page" value="1" ' . checked( 1, get_option( 'blp_acf_activate_settings_page' ), false ) . '/>';
 

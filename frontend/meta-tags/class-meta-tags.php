@@ -99,7 +99,7 @@ class Meta_Tags {
 	 */
 	public function meta_tags() {
 
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 			$disable_tags = get_field( 'blp_meta_disable_tags', 'option' );
 		} else {
 			$disable_tags = get_option( 'blp_meta_disable' );

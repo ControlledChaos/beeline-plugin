@@ -65,7 +65,7 @@ class Welcome {
 		 */
 
 		// If ACF is active, get the field from the ACF options page.
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 			$dismiss = get_field( 'blp_remove_welcome_dismiss', 'option' );
 
 		// If ACF is not active, get the field from the WordPress/ClassicPress options page.
@@ -82,7 +82,7 @@ class Welcome {
 		 */
 
 		// If ACF is active, get the field from the ACF options page.
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 			$welcome = get_field( 'blp_custom_welcome', 'option' );
 		} else {
 			$welcome = get_option( 'blp_custom_welcome' );

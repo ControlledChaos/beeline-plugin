@@ -29,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
 <?php if ( is_404() ) : ?>
 <meta name="DC.Description" content="404 <?php esc_attr( _e( 'Not Found' ) ); ?>" />
 <?php else : ?>
-<meta name="DC.Description" content="<?php esc_attr( do_action( 'blp_meta_description_tag' ) ); ?>" />
+<meta name="DC.Description" content="<?php // esc_attr( do_action( 'blp_meta_description_tag' ) ); ?>" />
 <?php endif; ?>
 <meta name="DC.Creator" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
 <meta name="DC.Subject" content="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>" />

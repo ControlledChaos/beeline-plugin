@@ -61,7 +61,7 @@ class Admin_Pages {
         add_action( 'admin_menu', [ $this, 'about_plugin' ] );
 
         // Add admin header.
-        if ( blp_acf_options() ) {
+        if ( blp_acf_pro() ) {
 
             // If the ACF free plus the Options Page addon or Pro plugin is active.
             $admin_header = get_field( 'blp_use_admin_header', 'option' );
@@ -135,7 +135,7 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( blp_acf_options() ) {
+        if ( blp_acf_pro() ) {
 
             // Get the field.
             $acf_position = get_field( 'blp_site_plugin_link_position', 'option' );
@@ -164,7 +164,7 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( blp_acf_options() ) {
+        if ( blp_acf_pro() ) {
 
             // Get the field.
             $link_label = get_field( 'blp_site_plugin_link_label', 'option' );
@@ -195,7 +195,7 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( blp_acf_options() ) {
+        if ( blp_acf_pro() ) {
 
             // Get the field.
             $link_icon  = get_field( 'blp_site_plugin_link_icon', 'option' );
@@ -456,7 +456,11 @@ class Admin_Pages {
 
         // Post type: post.
         if ( 'post' == $screen->post_type ) {
-            $post_title = esc_html__( 'Post Title', 'beeline-plugin' );
+			$post_title = esc_html__( 'Post Title', 'beeline-plugin' );
+
+		// Post type: client.
+		} elseif ( 'client' == $screen->post_type ) {
+			$post_title = esc_html__( 'Client Name', 'beeline-plugin' );
 
         // Post type: page.
         } elseif ( 'page' == $screen->post_type ) {

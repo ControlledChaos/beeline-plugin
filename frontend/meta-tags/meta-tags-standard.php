@@ -19,7 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 <?php if ( is_404() ) : ?>
 <meta name="description" content="404 <?php esc_attr( _e( 'Not Found' ) ); ?>" />
 <?php else : ?>
-<meta name="description" content="<?php esc_attr( do_action( 'blp_meta_description_tag' ) ); ?>" />
+<meta name="description" content="<?php // esc_attr( do_action( 'blp_meta_description_tag' ) ); ?>" />
 <?php endif; ?>
 <?php if ( is_singular() ) : ?>
 <meta name="author" content="<?php esc_attr( do_action( 'blp_meta_author_tag' ) ); ?>" />

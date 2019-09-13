@@ -121,7 +121,15 @@ class Admin {
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( blp_acf_pro() ) {
+
+			// Site settings fields.
 			include_once BLP_PATH . 'admin/class-settings-fields-site-acf.php';
+
+			// Post types fields.
+			include_once BLP_PATH . 'admin/class-fields-post-type-client.php';
+
+			// Page templates fields.
+			include_once BLP_PATH . 'admin/class-fields-page-templates.php';
 		}
 
 		// Functions for dasboard widgets, excluding the welcome panel.
@@ -137,7 +145,7 @@ class Admin {
 		require_once BLP_PATH . 'admin/class-admin-pages.php';
 
 		// Import custom fields for editing, if ACF Pro is active.
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 			include_once BLP_PATH . 'admin/class-fields-import.php';
 		}
 
@@ -283,7 +291,7 @@ class Admin {
 		 *
 		 * @since  1.0.0
 		 */
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 
 			/**
 			 * Get the fields registered by this plugin. An additional parameter

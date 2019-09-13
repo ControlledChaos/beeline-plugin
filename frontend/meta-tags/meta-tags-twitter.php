@@ -29,6 +29,6 @@ if ( ! defined( 'WPINC' ) ) {
 <?php if ( is_404() ) : ?>
 <meta name="twitter:description" content="404 <?php esc_attr( _e( 'Not Found' ) ); ?>" />
 <?php else : ?>
-<meta name="twitter:description" content="<?php esc_attr( do_action( 'blp_meta_description_tag' ) ); ?>" />
+<meta name="twitter:description" content="<?php // esc_attr( do_action( 'blp_meta_description_tag' ) ); ?>" />
 <?php endif; ?>
 <meta name="twitter:image:src" content="<?php esc_attr( do_action( 'blp_meta_image_tag' ) ); ?>" />

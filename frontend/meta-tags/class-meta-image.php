@@ -84,7 +84,7 @@ class Meta_Image {
 		global $post;
 
 		// If ACF is active.
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 
 			// Get the ACF image fields.
 			$blog_image    = get_field( 'blp_meta_blog_image', 'option' );

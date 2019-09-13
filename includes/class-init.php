@@ -100,6 +100,9 @@ final class Init {
 		// Post types and taxonomies.
 		require_once BLP_PATH . 'includes/post-types-taxes/class-post-type-tax.php';
 
+		// Page templates.
+		require_once BLP_PATH . 'includes/page-templates/class-page-templates.php';
+
 		// Dev and maintenance tools.
 		require_once BLP_PATH . 'includes/tools/class-tools.php';
 
