@@ -133,8 +133,18 @@ class Media {
 	 */
 	public function image_sizes() {
 
+		// 16:9 HD Video.
+		add_image_size( __( 'video', 'beeline-theme' ), 1280, 720, true );
+		add_image_size( __( 'video-md', 'beeline-theme' ), 960, 540, true );
+		add_image_size( __( 'video-sm', 'beeline-theme' ), 640, 360, true );
+
+		// 21:9 Cinemascope.
+		add_image_size( __( 'banner', 'beeline-theme' ), 1280, 549, true );
+		add_image_size( __( 'banner-md', 'beeline-theme' ), 960, 411, true );
+		add_image_size( __( 'banner-sm', 'beeline-theme' ), 640, 274, true );
+
 		// For link embedding and sharing on social sites.
-		add_image_size( __( 'meta-image', 'beeline-plugin' ), 1200, 630, true );
+		add_image_size( __( 'meta-image', 'beeline-plugin' ), 1280, 720, true );
 
 		/**
 		 * For use as featured image in admin columns.
@@ -142,6 +152,9 @@ class Media {
 		 * @see admin/class-admin-pages.php
 		 */
 		add_image_size( __( 'column-thumbnail', 'beeline-plugin' ), 48, 48, true );
+
+		// For the profile & contact cards.
+		add_image_size( __( 'team-profile', 'beeline-plugin' ), 320, 320, true );
 
 	}
 

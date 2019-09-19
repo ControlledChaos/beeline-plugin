@@ -127,9 +127,10 @@ class Admin {
 
 			// Post types fields.
 			include_once BLP_PATH . 'admin/class-fields-post-type-client.php';
+			include_once BLP_PATH . 'admin/class-fields-post-type-team.php';
 
 			// Page templates fields.
-			include_once BLP_PATH . 'admin/class-fields-page-templates.php';
+			include_once BLP_PATH . 'admin/class-fields-page-template-contact.php';
 		}
 
 		// Functions for dasboard widgets, excluding the welcome panel.
@@ -143,11 +144,6 @@ class Admin {
 
 		// Functions for various admin pages and edit screens.
 		require_once BLP_PATH . 'admin/class-admin-pages.php';
-
-		// Import custom fields for editing, if ACF Pro is active.
-		if ( blp_acf_pro() ) {
-			include_once BLP_PATH . 'admin/class-fields-import.php';
-		}
 
 		// Filter by page template.
 		require_once BLP_PATH . 'admin/class-admin-template-filter.php';

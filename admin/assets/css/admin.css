@@ -4,10 +4,6 @@
  *
  * @todo Nest this properly.
  */
-
-.wrap.posts-per-page {
-	max-width: 1024px;
-}
 /**
  * Admin Header
  */
@@ -17,6 +13,10 @@
 
 .blp-admin-header .admin-site-branding .admin-site-title {
   margin-top: 0;
+}
+
+.blp-admin-header .admin-navigation .admin-navigation-list {
+  margin-bottom: 0;
 }
 
 .blp-admin-header .admin-navigation .admin-navigation-list li {

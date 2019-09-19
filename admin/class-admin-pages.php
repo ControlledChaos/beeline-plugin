@@ -462,6 +462,10 @@ class Admin_Pages {
 		} elseif ( 'client' == $screen->post_type ) {
 			$post_title = esc_html__( 'Client Name', 'beeline-plugin' );
 
+		// Post type: team member.
+		} elseif ( 'team' == $screen->post_type ) {
+			$post_title = esc_html__( 'Team Member Name', 'beeline-plugin' );
+
         // Post type: page.
         } elseif ( 'page' == $screen->post_type ) {
             $post_title = esc_html__( 'Page Title', 'beeline-plugin' );

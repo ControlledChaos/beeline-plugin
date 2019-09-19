@@ -142,7 +142,7 @@ final class Fields_Post_Type_Client {
 						'name'              => 'client_description',
 						'type'              => 'wysiwyg',
 						'instructions'      => __( '', 'beeline-plugin' ),
-						'required'          => 1,
+						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => [
 							'width' => '',

@@ -98,8 +98,17 @@ class Meta_Title {
 		// Apply a filter to search title.
 		$search_meta = apply_filters( 'blp_search_meta_title', $search_title );
 
+		// Use the SEO title on the front page and 404 error page if ACF Pro is active.
+		if ( class_exists( 'acf_pro' ) && ( is_front_page() || is_404() ) ) {
+
+			if ( get_field( 'blp_meta_front_page_title', 'option' ) ) {
+				$title = get_field( 'blp_meta_front_page_title', 'option' );
+			} else {
+				$title = esc_html( get_bloginfo( 'name' ) );
+			}
+
 		// Use the website name on the front page and 404 error page.
-		if ( is_front_page() || is_404() ) {
+		} elseif ( is_front_page() || is_404() ) {
 			$title = esc_html( get_bloginfo( 'name' ) );
 
 		// Use the Posts Page title for the blog index.

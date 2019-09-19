@@ -333,7 +333,7 @@ function blp_settings_links( $links, $file ) {
 		 */
 
 		// If Advanced Custom Fields is active.
-		if ( blp_acf_options() ) {
+		if ( blp_acf_pro() ) {
 
 			// Get the field.
 			$acf_position = get_field( 'blp_settings_link_position', 'option' );

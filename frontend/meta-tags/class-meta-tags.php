@@ -60,12 +60,49 @@ class Meta_Tags {
 	 */
 	public function __construct() {
 
-		// Add meta tags to <head> if not disabled.
+		// Filter the `<title>` tag.
+		add_filter( 'wp_title', [ $this, 'title_tag' ], 10, 2 );
+
+		// Add meta tags to `<head>` if not disabled.
 		add_action( 'wp_head', [ $this, 'meta_tags' ] );
 
 	}
 
-		/**
+	/**
+	 * Frontend dependencies
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function title_tag( $title, $sep ) {
+
+		// Title variables, check for ACF Pro.
+		if ( class_exists( 'acf_pro' ) ) {
+			$seo_title       = get_field( 'blp_meta_front_page_title', 'option' );
+			$seo_description = get_field( 'blp_meta_front_page_description', 'option' );
+		} else {
+			$seo_title       = get_bloginfo( 'name' );
+			$seo_description = get_bloginfo( 'description' );
+		}
+
+		// Use the SEO title on the front page and 404 error page if ACF Pro is active.
+		if ( is_front_page() || is_404() ) {
+
+			$title = sprintf(
+				'%1s %2s %3s',
+				$seo_title,
+				$sep,
+				$seo_description
+			);
+
+		}
+
+		return $title;
+
+	}
+
+	/**
 	 * Frontend dependencies
 	 *
 	 * @since  1.0.0
