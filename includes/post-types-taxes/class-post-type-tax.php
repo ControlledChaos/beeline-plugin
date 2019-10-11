@@ -88,9 +88,6 @@ class Post_Types_Taxes {
 		// Drag & drop custom post and taxonomy orders.
 		require_once BLP_PATH . 'includes/post-types-taxes/class-post-type-order.php';
 
-		// Capability to add custom taxonomy templates.
-		require_once BLP_PATH . 'includes/post-types-taxes/class-taxonomy-templates.php';
-
 	}
 
 }

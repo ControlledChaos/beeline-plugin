@@ -61,10 +61,12 @@ class Post_Type_Tax_Functions {
 		add_filter( 'post_updated_messages', [ $this, 'update_messages' ], 99 );
 
 		// Change Posts to News.
-		add_action( 'admin_menu', [ $this, 'change_post_label' ] );
-		add_action( 'init', [ $this, 'change_post_object' ] );
-		add_action( 'admin_menu', [ $this, 'menu_news_icon' ] );
-		add_filter( 'post_updated_messages', [ $this, 'news_messages' ] );
+		add_action( 'admin_menu', [ $this, 'change_menu_labels' ] );
+		add_action( 'init', [ $this, 'change_page_labels' ] );
+		add_action( 'admin_menu', [ $this, 'change_menu_icon' ] );
+		add_filter( 'post_updated_messages', [ $this, 'change_page_messages' ] );
+		add_action( 'admin_head', [ $this, 'dashboard_icons' ] );
+		add_action( 'admin_footer', [ $this, 'at_glance_text' ] );
 
 	}
 
@@ -153,68 +155,77 @@ class Post_Type_Tax_Functions {
 	}
 
 	/**
-	 * Change posts menu labels
+	 * Change post type labels in the admin menu
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @global object $menu Gets the admin menu.
+	 * @global object $submenu Gets the admin submenus.
+	 * @return string Returns the various labels.
 	 */
-	function change_post_label() {
+	public function change_menu_labels() {
 
 		// Access global variables.
 		global $menu, $submenu;
 
-		// Set new labels.
-		$menu[5][0] = __( 'News', 'beeline-plugin' );
-		$submenu['edit.php'][5][0]  = __( 'News', 'beeline-plugin' );
-		$submenu['edit.php'][10][0] = __( 'Add News', 'beeline-plugin' );
-		$submenu['edit.php'][16][0] = __( 'News Tags', 'beeline-plugin' );
+		// The "Posts" position in the admin menu.
+		$menu[5][0] = __( 'News', 'posts-to-news' );
 
-		echo '';
+		// Submenus of the "Posts" position in the admin menu.
+		$submenu['edit.php'][5][0]  = __( 'News', 'posts-to-news' );
+		$submenu['edit.php'][10][0] = __( 'Add News', 'posts-to-news' );
+		$submenu['edit.php'][15][0] = __( 'News Categories', 'posts-to-news' );
+		$submenu['edit.php'][16][0] = __( 'News Tags', 'posts-to-news' );
 
 	}
 
 	/**
-	 * Change posts pages labels
+	 * Change post type labels on admin pages
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return void
+	 * @global array $wp_post_types Gets the array of admin page labels.
+	 * @return string Returns the various labels.
 	 */
-	function change_post_object() {
+	public function change_page_labels() {
 
 		// Access global variables.
 		global $wp_post_types;
 
-		// Set new labels.
-		$labels = &$wp_post_types['post']->labels;
-		$labels->name               = __( 'News', 'beeline-plugin' );
-		$labels->singular_name      = __( 'News', 'beeline-plugin' );
-		$labels->add_new            = __( 'Add News', 'beeline-plugin' );
-		$labels->add_new_item       = __( 'Add News', 'beeline-plugin' );
-		$labels->edit_item          = __( 'Edit News', 'beeline-plugin' );
-		$labels->new_item           = __( 'News', 'beeline-plugin' );
-		$labels->view_item          = __( 'View News', 'beeline-plugin' );
-		$labels->search_items       = __( 'Search News', 'beeline-plugin' );
-		$labels->not_found          = __( 'No News found', 'beeline-plugin' );
-		$labels->not_found_in_trash = __( 'No News found in Trash', 'beeline-plugin' );
-		$labels->all_items          = __( 'All News', 'beeline-plugin' );
-		$labels->menu_name          = __( 'News', 'beeline-plugin' );
-		$labels->name_admin_bar     = __( 'News', 'beeline-plugin' );
+		// The labels of the array.
+		$labels = $wp_post_types['post']->labels;
+		$labels->name               = __( 'News', 'posts-to-news' );
+		$labels->singular_name      = __( 'News', 'posts-to-news' );
+		$labels->add_new            = __( 'Add News', 'posts-to-news' );
+		$labels->add_new_item       = __( 'Add News', 'posts-to-news' );
+		$labels->edit_item          = __( 'Edit News', 'posts-to-news' );
+		$labels->new_item           = __( 'News', 'posts-to-news' );
+		$labels->view_item          = __( 'View News', 'posts-to-news');
+		$labels->search_items       = __( 'Search News', 'posts-to-news' );
+		$labels->not_found          = __( 'No News found', 'posts-to-news' );
+		$labels->not_found_in_trash = __( 'No News found in Trash', 'posts-to-news' );
+		$labels->all_items          = __( 'All News', 'posts-to-news'  );
+		$labels->menu_name          = __( 'News', 'posts-to-news' );
+		$labels->name_admin_bar     = __( 'News', 'posts-to-news' );
 
 	}
 
 	/**
-	 * Change posts pin icon to megaphone
+	 * Change the pin icon to a megaphone
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return string Returns the new icon class.
+	 * @global object $menu Gets the admin menu.
+	 * @return string Returns the various labels.
 	 */
-	function menu_news_icon() {
+	public function change_menu_icon() {
 
 		// Access global variables.
 		global $menu;
 
-		// Find News and set the new icon class.
 		foreach ( $menu as $key => $val ) {
-			if ( __( 'News', 'beeline-plugin' ) == $val[0] ) {
+
+			if ( __( 'News', 'posts-to-news' ) == $val[0] ) {
 				$menu[$key][6] = 'dashicons-megaphone';
 			}
 		}
@@ -225,34 +236,137 @@ class Post_Type_Tax_Functions {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return array Returns the modified array of messages.
+	 * @param array $messages Gets the array of messages.
+	 * @global object $post Gets the post object.
+	 * @global object $post_ID Gets the post ID.
+	 * @return array Returns the array of messages.
 	 */
-	function news_messages( $messages ) {
+	public function change_page_messages( $messages ) {
 
 		// Access global variables.
 		global $post, $post_ID;
 
+		// Conditional message for revisions.
+		if ( isset( $_GET['revision'] ) ) {
+			$revision = sprintf(
+				__( '%1s %2s' ),
+				__( 'News post restored to revision from', 'posts-to-news' ),
+				wp_post_revision_title( (int) $_GET['revision'], false )
+			);
+		} else {
+			$revision = false;
+		}
+
+		// Updated message.
+		$updated = sprintf(
+			__( '%1s <a href="%2s">%3s</a>' ),
+			__( 'News updated.', 'posts-to-news' ),
+			esc_url( get_permalink( $post_ID ) ),
+			__( 'View News Post', 'posts-to-news' )
+		);
+
+		// Published message.
+		$published = sprintf(
+			__( '%1s <a href="%2s">%3s</a>' ),
+			__( 'News published.', 'posts-to-news' ),
+			esc_url( get_permalink( $post_ID ) ),
+			__( 'View News Post', 'posts-to-news' )
+		);
+
+		// Submitted message.
+		$submitted = sprintf(
+			__( '%1s <a target="_blank" href="%2s">%3s</a>' ),
+			__( 'News submitted.', 'posts-to-news' ),
+			esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ),
+			__( 'Preview News Post', 'posts-to-news' )
+		);
+
+		// Scheduled message.
+		$scheduled = sprintf(
+			__( '%1s <strong>%2s</strong>. <a target="_blank" href="%3s">%4s</a>' ),
+			__( 'News scheduled for:', 'posts-to-news' ),
+			date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ),
+			esc_url( get_permalink( $post_ID ) ),
+			__( 'Preview News Post', 'posts-to-news' )
+		);
+
+		// Draft updated message.
+		$draft = sprintf(
+			__( '%1s <a target="_blank" href="%2s">%3s</a>' ),
+			__( 'News draft updated.', 'posts-to-news' ),
+			esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ),
+			__( 'Preview News Post', 'posts-to-news' )
+		);
+
+		// The array of messages for the Posts post type.
 		$messages['post'] = [
-			0  => '', // Unused. Messages start at index 1.
-			1  => sprintf( __( 'News Updated. <a href="%s">View News Post</a>', 'beeline-plugin' ), esc_url( get_permalink( $post_ID ) ) ),
-			2  => __( 'Custom field updated.', 'beeline-plugin' ),
-			3  => __( 'Custom field deleted.', 'beeline-plugin' ),
-			4  => __( 'News updated.', 'beeline-plugin' ),
-			/* translators: %s: date and time of the revision */
-			5  => isset( $_GET['revision'] ) ? sprintf( __( 'News post restored to revision from %s', 'beeline-plugin' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6  => sprintf( __( 'News published. <a href="%s">View News Post</a>', 'beeline-plugin' ), esc_url( get_permalink( $post_ID ) ) ),
-			7  => __( 'News saved.', 'beeline-plugin' ),
-			8  => sprintf( __( 'News submitted. <a target="_blank" href="%s">Preview News Post</a>', 'beeline-plugin' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
-			9  => sprintf( __( 'News scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview News Post</a>', 'beeline-plugin' ),
-			// translators: Publish box date format, see http://php.net/date
-			date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
-			10 => sprintf( __( 'News draft updated. <a target="_blank" href="%s">Preview News Post</a>', 'beeline-plugin' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+
+			// First is unused. Messages start at index 1.
+			0  => null,
+			1  => $updated,
+			2  => __( 'Custom field updated.', 'posts-to-news' ),
+			3  => __( 'Custom field deleted.', 'posts-to-news' ),
+			4  => __( 'News updated.', 'posts-to-news' ),
+			5  => $revision,
+			6  => $published,
+			7  => __( 'News saved.', 'posts-to-news' ),
+			8  => $submitted,
+			9  => $scheduled,
+			10 => $draft
 		];
 
-		// Return the modified array of messages.
+		// Return the array of messages.
 		return $messages;
 
 	}
+
+	/**
+	 * News posts dashboard icon
+	 *
+	 * Changes the posts icon in the At a Glance dashboard widget.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the style block in the admin head.
+	 */
+	public function dashboard_icons() {
+
+		// Get the screen ID to target the Dashboard.
+        $screen = get_current_screen();
+
+        // Bail if not on the Dashboard screen.
+        if ( $screen->id != 'dashboard' ) {
+			return;
+		}
+
+		// Minified style block.
+		$style = '<style>#dashboard_right_now .post-count a[href="edit.php?post_type=post"]::before,#dashboard_right_now .post-count span::before{content:"\f488"!important;}</style>';
+
+		// Print the style block.
+		echo $style;
+
+	}
+
+	/**
+	 * News posts dashboard text
+	 *
+	 * Changes the posts text in the At a Glance dashboard widget.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return string Returns the script block in the admin head.
+	 */
+	public function at_glance_text() {
+
+		// Get the screen ID to target the Dashboard.
+        $screen = get_current_screen();
+
+        // Bail if not on the Dashboard screen.
+        if ( $screen->id != 'dashboard' ) {
+			return;
+		} ?>
+		<script>jQuery(document).ready(function(a){a('.post-count a[href="edit.php?post_type=post"]').text(function(){return a(this).text().replace('1 Post','1 News Post')}),a('.post-count a[href="edit.php?post_type=post"]').text(function(){return a(this).text().replace('Posts','News Posts')})});</script>
+	<?php }
 
 }
 

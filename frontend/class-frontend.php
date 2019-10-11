@@ -120,6 +120,11 @@ class Frontend {
 		// Meta tags for SEO.
 		include_once BLP_PATH . 'frontend/meta-tags/class-meta-tags.php';
 
+		// The frontend content filters for post types.
+		if ( blp_acf_pro() ) {
+			require_once BLP_PATH . 'frontend/class-content-filters.php';
+		}
+
 	}
 
 	/**

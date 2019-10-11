@@ -133,10 +133,15 @@ class Media {
 	 */
 	public function image_sizes() {
 
+		// 1:1 square.
+		add_image_size( __( 'large-thumbnail', 'beeline-theme' ), 240, 240, true );
+		add_image_size( __( 'xlarge-thumbnail', 'beeline-theme' ), 320, 320, true );
+
 		// 16:9 HD Video.
 		add_image_size( __( 'video', 'beeline-theme' ), 1280, 720, true );
 		add_image_size( __( 'video-md', 'beeline-theme' ), 960, 540, true );
 		add_image_size( __( 'video-sm', 'beeline-theme' ), 640, 360, true );
+		add_image_size( __( 'video-preview', 'beeline-theme' ), 284, 160, true );
 
 		// 21:9 Cinemascope.
 		add_image_size( __( 'banner', 'beeline-theme' ), 1280, 549, true );

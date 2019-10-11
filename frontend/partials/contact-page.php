@@ -30,7 +30,7 @@ do_action( 'blp_contact_page' );
 					$url     = $photo['url'];
 					$title   = $photo['title'];
 					$alt     = $photo['alt'];
-					$size    = 'thumbnail';
+					$size    = 'large-thumbnail';
 					$thumb   = $photo['sizes'][ $size ];
 					$width   = $photo['sizes'][ $size . '-width' ];
 					$height  = $photo['sizes'][ $size . '-height' ];
@@ -39,13 +39,26 @@ do_action( 'blp_contact_page' );
 					// Use the profile photo if one is selected.
 					if ( $thumb ) {
 						$src = $thumb;
+						$alt = sprintf(
+							'%1s%2s',
+							get_the_title( $member->ID ),
+							__( '&#39;s profile photo', 'beeline-plugin' )
+						);
 					} else {
 						$src = $default;
+						$alt = sprintf(
+							'%1s%2s',
+							get_the_title( $member->ID ),
+							__( '&#39;s profile photo coming soon', 'beeline-plugin' )
+						);
 					}
 
 					?>
 					<a class="team-photo-link team-photo-link-contact" href="<?php the_permalink( $member->ID ); ?>">
-						<img class="team-photo team-photo-contact" src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" style="max-width: <?php echo get_option( 'thumbnail_size_w' ); ?>px" />
+						<figure>
+							<img class="team-photo team-photo-contact" src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" />
+							<figcaption class="screen-reader-text"><?php echo $alt; ?></figcaption>
+						</figure>
 					</a>
 					<ul>
 						<li class="contact-name"><a href="<?php echo get_permalink( $member->ID ); ?>"><?php echo get_the_title( $member->ID ); ?></a></li>

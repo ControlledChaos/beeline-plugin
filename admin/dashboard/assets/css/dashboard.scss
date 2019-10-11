@@ -3,15 +3,15 @@
  */
 #dashboard_right_now .post-count a::before,
 #dashboard_right_now .post-count span::before {
-  content: '\f488';
+	content: '\f488';
 }
 
 #dashboard_right_now .post-count.client-count a::before,
 #dashboard_right_now .post-count.client-count span::before {
-  content: '\f480';
+	content: '\f480';
 }
 
 #dashboard_right_now .post-count.team-count a::before,
 #dashboard_right_now .post-count.team-count span::before {
-  content: '\f307';
+	content: '\f307';
 }

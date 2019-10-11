@@ -26,6 +26,41 @@ button.fancybox-arrow:active {
 /**
  * Profile/contact cards
  */
+.team-member-content .team-member-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.team-member-content .team-member-top .team-photo-wrap {
+  margin-right: 1em;
+}
+
+.team-member-content .team-photo {
+  border-radius: 50%;
+}
+
+.team-member-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-member-content ul ul {
+  margin: 0;
+}
+
+.team-member-content ul li {
+  margin: 0;
+  line-height: 1.25;
+}
+
+/**
+ * Profile/contact cards
+ */
 .profile-grid {
   display: -ms-grid;
   display: grid;
@@ -41,6 +76,7 @@ button.fancybox-arrow:active {
 
 .profile-grid .team-photo {
   display: block;
+  max-width: 160px;
   margin: 0 auto;
   border-radius: 50%;
 }

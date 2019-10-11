@@ -26,6 +26,40 @@ button.fancybox-arrow:active {
 /**
  * Profile/contact cards
  */
+.team-member-content {
+
+	.team-member-top {
+		display: flex;
+		align-items: center;
+
+		.team-photo-wrap {
+			margin-right: 1em;
+		}
+	}
+
+	.team-photo {
+		border-radius: 50%;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		ul {
+			margin: 0;
+		}
+
+		li {
+			margin: 0;
+			line-height: 1.25;
+		}
+	}
+}
+
+/**
+ * Profile/contact cards
+ */
 .profile-grid {
 
 	display: grid;
@@ -39,6 +73,7 @@ button.fancybox-arrow:active {
 
 	.team-photo {
 		display: block;
+		max-width: 160px;
 		margin: 0 auto;
 		border-radius: 50%;
 	}

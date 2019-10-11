@@ -74,30 +74,30 @@ class Enqueue_Frontend_Scripts {
 	public function scripts() {
 
 		// Non-vendor plugin script. Uncomment to use.
-		// wp_enqueue_script( BLP_ADMIN_SLUG, BLP_URL . 'assets/js/frontend.js', [ 'jquery' ], BLP_VERSION, true );
+		// wp_enqueue_script( BLP_ADMIN_SLUG, BLP_URL . 'frontend/assets/js/frontend.js', [ 'jquery' ], BLP_VERSION, true );
 
 		// Fancybox 3.
 		if ( get_option( 'blp_enqueue_fancybox_script' ) ) {
-			wp_enqueue_script( BLP_ADMIN_SLUG . '-fancybox', BLP_URL . 'assets/js/jquery.fancybox.min.js', [ 'jquery' ], BLP_VERSION, true );
+			wp_enqueue_script( BLP_ADMIN_SLUG . '-fancybox', BLP_URL . 'frontend/assets/js/jquery.fancybox.min.js', [ 'jquery' ], BLP_VERSION, true );
 		}
 
 		// Slick.
 		if ( get_option( 'blp_enqueue_slick' ) ) {
-			wp_enqueue_script( BLP_ADMIN_SLUG . '-slick', BLP_URL . 'assets/js/slick.min.js', [ 'jquery' ], BLP_VERSION, true );
+			wp_enqueue_script( BLP_ADMIN_SLUG . '-slick', BLP_URL . 'frontend/assets/js/slick.min.js', [ 'jquery' ], BLP_VERSION, true );
 		}
 
 		// Tabslet.
 		if ( get_option( 'blp_enqueue_tabslet' ) ) {
-			wp_enqueue_script( BLP_ADMIN_SLUG . '-tabslet', BLP_URL . 'assets/js/jquery.tabslet.min.js', [ 'jquery' ], BLP_VERSION, true );
+			wp_enqueue_script( BLP_ADMIN_SLUG . '-tabslet', BLP_URL . 'frontend/assets/js/jquery.tabslet.min.js', [ 'jquery' ], BLP_VERSION, true );
 		}
 
 		// Tooltipster.
 		if ( get_option( 'blp_enqueue_tooltipster' ) ) {
-			wp_enqueue_script( BLP_ADMIN_SLUG . '-tooltipster', BLP_URL . 'assets/js/tooltipster.bundle.min.js', [ 'jquery' ], BLP_VERSION, true );
+			wp_enqueue_script( BLP_ADMIN_SLUG . '-tooltipster', BLP_URL . 'frontend/assets/js/tooltipster.bundle.min.js', [ 'jquery' ], BLP_VERSION, true );
 		}
 
 		// FitVids.
-		wp_enqueue_script( BLP_ADMIN_SLUG . '-fitvids', BLP_URL . 'assets/js/jquery.fitvids.min.js', [ 'jquery' ], BLP_VERSION, true );
+		wp_enqueue_script( BLP_ADMIN_SLUG . '-fitvids', BLP_URL . 'frontend/assets/js/jquery.fitvids.min.js', [ 'jquery' ], BLP_VERSION, true );
 
 	}
 
