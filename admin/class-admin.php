@@ -114,11 +114,6 @@ class Admin {
 		// The core settings class for the plugin.
 		require_once BLP_PATH . 'admin/class-settings.php';
 
-		// Add icons to the titles of ACF tab and accordion fields, if active.
-		if ( blp_acf_pro() && ! get_option( 'blp_acf_activate_settings_page' ) ) {
-			include_once BLP_PATH . 'admin/class-acf-tab-icons.php';
-		}
-
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( blp_acf_pro() ) {
 
