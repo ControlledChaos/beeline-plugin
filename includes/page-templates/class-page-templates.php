@@ -161,10 +161,12 @@ final class Page_Templates {
 			ob_start();
 
 			// Include the snippet content.
-			include BLP_PATH . 'frontend/partials/contact-page.php';
+			include_once BLP_PATH . 'frontend/partials/contact-page.php';
 
 			$content = ob_get_contents();
 			ob_end_clean();
+			echo $content;
+		} else {
 			echo $content;
 		}
 
