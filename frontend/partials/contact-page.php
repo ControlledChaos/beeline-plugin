@@ -69,8 +69,8 @@ do_action( 'blp_contact_page' );
 							<li class="contact-number">
 								<?php echo sprintf(
 									'<a href="tel:%1s">%2s</a>',
-									get_sub_field( 'team_contact_number', $member->ID ),
-									get_sub_field( 'team_contact_number', $member->ID )
+									esc_html( get_sub_field( 'team_contact_number', $member->ID  ) ),
+									esc_html( get_sub_field( 'team_contact_number', $member->ID ) )
 								); ?>
 							</li>
 							<?php endwhile; ?>
@@ -79,8 +79,8 @@ do_action( 'blp_contact_page' );
 						<li class="contact-email">
 							<?php echo sprintf(
 								'<a href="mailto:%1s">%2s</a>',
-								get_field( 'team_contact_email', $member->ID ),
-								get_field( 'team_contact_email', $member->ID )
+								esc_attr( esc_html( get_field( 'team_contact_email', $member->ID ) ) ),
+								esc_html( get_field( 'team_contact_email', $member->ID ) )
 							); ?>
 						</li>
 					</ul>
