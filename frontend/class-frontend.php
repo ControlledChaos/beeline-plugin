@@ -81,6 +81,9 @@ class Frontend {
 		// Add Fancybox attributes to attachment page image link.
 		add_action( 'wp_footer', [ $this, 'attachment_fancybox' ] );
 
+		// Alphabetic archive order.
+		add_action( 'pre_get_posts', [ $this, 'query_order' ] );
+
 	}
 
 	/**
@@ -199,6 +202,21 @@ class Frontend {
 
 		<?php }
 
+	}
+
+	/**
+	 * Alphabetic archive order.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return array
+	 */
+	function query_order( $query ) {
+
+		if ( $query->is_post_type_archive( 'client' ) && $query->is_main_query() ) {
+			$query->set( 'orderby', 'title' );
+			$query->set( 'order', 'ASC' );
+		}
 	}
 
 }
