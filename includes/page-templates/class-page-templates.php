@@ -167,7 +167,7 @@ final class Page_Templates {
 			ob_end_clean();
 			echo $content;
 		} else {
-			echo $content;
+			return $content;
 		}
 
 	}
