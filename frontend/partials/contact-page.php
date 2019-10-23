@@ -54,12 +54,10 @@ do_action( 'blp_contact_page' );
 					}
 
 					?>
-					<a class="team-photo-link team-photo-link-contact" href="<?php the_permalink( $member->ID ); ?>">
-						<figure>
-							<img class="team-photo team-photo-contact" src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" />
-							<figcaption class="screen-reader-text"><?php echo $alt; ?></figcaption>
-						</figure>
-					</a>
+					<figure>
+						<img class="team-photo team-photo-contact" src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" />
+						<figcaption class="screen-reader-text"><?php echo $alt; ?></figcaption>
+					</figure>
 					<ul>
 						<li class="contact-name"><a href="<?php echo get_permalink( $member->ID ); ?>"><?php echo get_the_title( $member->ID ); ?></a></li>
 						<li class="contact-title"><?php the_field( 'team_title', $member->ID ); ?></li>
