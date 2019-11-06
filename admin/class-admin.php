@@ -121,7 +121,7 @@ class Admin {
 			include_once BLP_PATH . 'admin/class-settings-fields-site-acf.php';
 
 			// Post types fields.
-			include_once BLP_PATH . 'admin/class-fields-post-type-client.php';
+			// include_once BLP_PATH . 'admin/class-fields-post-type-client.php';
 			include_once BLP_PATH . 'admin/class-fields-post-type-team.php';
 
 			// Page templates fields.
