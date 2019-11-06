@@ -213,8 +213,11 @@ class Frontend {
 	 */
 	function query_order( $query ) {
 
-		if ( $query->is_post_type_archive( 'client' ) && $query->is_main_query() ) {
+		if ( ( $query->is_post_type_archive( 'client' ) ) && $query->is_main_query() ) {
 			$query->set( 'orderby', 'title' );
+			$query->set( 'order', 'ASC' );
+		} elseif ( $query->is_tax( 'client_type' ) && $query->is_main_query() ) {
+			$query->set( 'orderby', 'menu_order' );
 			$query->set( 'order', 'ASC' );
 		}
 	}
