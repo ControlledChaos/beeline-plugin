@@ -91,9 +91,6 @@ class Welcome {
 		if ( $welcome ) {
 			remove_action( 'welcome_panel', 'wp_welcome_panel' );
 			add_action( 'welcome_panel', [ $this, 'welcome_panel' ], 25 );
-
-			// Register the welcome panel areas.
-			add_action( 'widgets_init', [ $this, 'widget_areas' ], 25 );
 		}
 
 	}
@@ -123,47 +120,6 @@ class Welcome {
 			';
 
 		echo $dismiss;
-
-	}
-
-	/**
-	 * Register the welcome panel areas.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function widget_areas() {
-
-		register_sidebar( [
-			'name'          => __( 'Welcome Panel - First Area', 'beeline-plugin' ),
-			'id'            => 'blp_welcome_widget_first',
-			'description'   => __( '', 'beeline-plugin' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h3>',
-			'after_title'   => '</h3>',
-		] );
-
-		register_sidebar( [
-			'name'          => __( 'Welcome Panel - Second Area', 'beeline-plugin' ),
-			'id'            => 'blp_welcome_widget_second',
-			'description'   => __( '', 'beeline-plugin' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h3>',
-			'after_title'   => '</h3>',
-		] );
-
-		register_sidebar( [
-			'name'          => __( 'Welcome Panel - Third Area', 'beeline-plugin' ),
-			'id'            => 'blp_welcome_widget_last',
-			'description'   => __( '', 'beeline-plugin' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h3>',
-			'after_title'   => '</h3>',
-		] );
 
 	}
 
